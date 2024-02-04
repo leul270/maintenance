@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from base.models import  Technician
 from customer.models import UserForm
+from .models import TechnicianForm
 
 
 # Create your views here.
@@ -27,11 +28,28 @@ def allTasks(request):
  
     context = {'tasks':tasks}
     return render(request, 'technician/allTasks.html',context)
-def fixed(request,pk):
+def isFixed(request,pk):
+    technicianForm  = TechnicianForm()
     task = UserForm.objects.get(id=pk)
-    task.fixed = True
-    task.save()
-    return redirect('allTasks')
+    if request.method == 'POST':
+        is_fixed = request.POST['is_fixed']
+        if is_fixed =="True":
+            task.fixed = True
+            task.save()
+            technicianForm.task = task
+            technicianForm.short_description= request.POST['short_description']
+            technicianForm.is_fixed = True
+            technicianForm.save()
+            return redirect('home')
+        else:
+            technicianForm.task = task
+            technicianForm.short_description= request.POST['short_description']
+            technicianForm.reason= request.POST['reason']
+            technicianForm.solution= request.POST['solution']
+            technicianForm.save()
+
+            return redirect('home')
+    return redirect('home')
 
 
 

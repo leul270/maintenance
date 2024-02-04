@@ -65,8 +65,3 @@ class Technician(models.Model):
         return f"{self.user.first_name} {self.user.last_name}"
 
 
-
-    short_description = models.TextField(null=True)
-
-    def __str__(self):
-        return self.short_description

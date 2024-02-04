@@ -116,21 +116,3 @@ class TechnicianResgistrationForm(UserCreationForm):
         )
         technician = technician.save()
         return technician
-
-
-class UserForm(ModelForm):
-    class Meta:
-        model = user_form
-        fields = "__all__"
-
-
-class HardwareForm(ModelForm):
-    class Meta:
-        model = hardware_form
-        fields = "__all__"
-
-
-class SoftwareForm(ModelForm):
-    class Meta:
-        model = software_form
-        fields = "__all__"

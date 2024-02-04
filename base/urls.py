@@ -27,7 +27,6 @@ urlpatterns = [
         views.administrator_home,
         name="administrator_home",
     ),
-    path("create_form/", views.create_form, name="create_form"),
       path(
         "login1",
         views.home,

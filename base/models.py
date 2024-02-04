@@ -29,8 +29,7 @@ class Customer(models.Model):
 
 
 class Administrator(models.Model):
-    form_name = models.CharField(
-                                    max_length=50,)
+
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     department = models.CharField(max_length=100)
     campus = models.CharField(max_length=50)
@@ -43,6 +42,7 @@ class Administrator(models.Model):
 
 class Technician(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    
     department = models.CharField(max_length=100)
     campus = models.CharField(max_length=50)
     work_experiance = models.IntegerField()
@@ -65,39 +65,7 @@ class Technician(models.Model):
         return f"{self.user.first_name} {self.user.last_name}"
 
 
-class user_form(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True)
-    administrator = models.ForeignKey(
-        Administrator, on_delete=models.CASCADE, default=1
-    )
-    technician = models.ForeignKey(Technician, on_delete=models.CASCADE, null=True)
 
-    # DEVICE_PROBLEM_CHOICES = [
-    #     ("hardware", "Hardware"),
-    #     ("software", "Software"),
-    # ]
-
-    # device_problem = models.CharField(max_length=20, choices=DEVICE_PROBLEM_CHOICES)
-   
-    short_description = models.TextField(null=True)
-    
-    fixed =  models.BooleanField(default = False,null=True)
-    reviewed =  models.BooleanField(default = False, null=True)
-
-
-
-    def __str__(self):
-        return self.form_name
-
-
-class hardware_form(models.Model):
-    short_description = models.TextField(null=True)
-
-    def __str__(self):
-        return self.short_description
-
-
-class software_form(models.Model):
     short_description = models.TextField(null=True)
 
     def __str__(self):

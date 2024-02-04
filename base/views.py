@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.urls import path
 from .forms import *
 from django.contrib.auth.decorators import login_required
-from .models import user_form
 
 # Create your views here.
 
@@ -80,14 +79,6 @@ def administrator_home(request, id):
     return render(request, "administrator/administrator_home.html", context)
 
 
-def create_form(request):
-    form = UserForm()
-    
-    if form.is_valid():
-        form = form.save()
-        return redirect("user_home")
-    context = {"form": form}
-    return render(request, "form.html", context)
 
 
 # def device_create(request):

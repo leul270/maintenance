@@ -29,6 +29,8 @@ class Customer(models.Model):
 
 
 class Administrator(models.Model):
+    form_name = models.CharField(
+                                    max_length=50,)
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     department = models.CharField(max_length=100)
     campus = models.CharField(max_length=50)
@@ -70,16 +72,15 @@ class user_form(models.Model):
     )
     technician = models.ForeignKey(Technician, on_delete=models.CASCADE, null=True)
 
-    DEVICE_PROBLEM_CHOICES = [
-        ("hardware", "Hardware"),
-        ("software", "Software"),
-    ]
+    # DEVICE_PROBLEM_CHOICES = [
+    #     ("hardware", "Hardware"),
+    #     ("software", "Software"),
+    # ]
 
-    device_problem = models.CharField(max_length=20, choices=DEVICE_PROBLEM_CHOICES)
-    can_the_pc_start = models.BooleanField(default=False)
+    # device_problem = models.CharField(max_length=20, choices=DEVICE_PROBLEM_CHOICES)
+   
     short_description = models.TextField(null=True)
-    form_name = models.CharField(
-        max_length=50,)
+    
     fixed =  models.BooleanField(default = False,null=True)
     reviewed =  models.BooleanField(default = False, null=True)
 

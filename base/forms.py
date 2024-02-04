@@ -67,6 +67,7 @@ class AdministratorResgistrationForm(UserCreationForm):
 class TechnicianResgistrationForm(UserCreationForm):
     department = forms.CharField(max_length=50)
     campus = forms.CharField(max_length=50)
+    phone_number = forms.IntegerField()
 
     work_experiance = forms.IntegerField()
     SKILL_LEVEL_CHOICES = (
@@ -93,6 +94,7 @@ class TechnicianResgistrationForm(UserCreationForm):
             "password2",
             "department",
             "campus",
+            'phone_number'
         ]
 
     def save(self, commit=True):
@@ -102,6 +104,7 @@ class TechnicianResgistrationForm(UserCreationForm):
         campus = self.cleaned_data["campus"]
         skill_level = self.cleaned_data["skill_level"]
         administrator = self.cleaned_data["administrator"]
+        phone_number = self.cleaned_data["phone_number"]
         technician = Technician.objects.create(
             user=user,
             department=department,
@@ -109,8 +112,9 @@ class TechnicianResgistrationForm(UserCreationForm):
             work_experiance=work_experiance,
             skill_level=skill_level,
             administrator=administrator,
+            phone_number=phone_number,
         )
-        technician = technician, save()
+        technician = technician.save()
         return technician
 
 

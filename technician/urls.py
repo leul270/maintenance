@@ -7,5 +7,6 @@ urlpatterns = [
       path("detail/<str:pk>", views.detail, name="detail"),
            path("updateProfile/<str:pk>", views.updateProfile, name="updateProfile"),
             path("all-tasks", views.allTasks, name="allTasks"),
+            path("<str:pk>", views.fixed, name="fixed"),
     
 ]

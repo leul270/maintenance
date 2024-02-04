@@ -23,100 +23,48 @@
       <section class="devlist">
         <div class="container">
           <div class="grid grid--three">
+
+            {% for task in tasks %}
             <div class="column card">
               <div class="dev">
-                <a href="{% url 'detail' 1 %}" class="card__body">
+                <a href="{% url 'detail' task.id %}" class="card__body">
                   <div class="dev__profile">
                     
                     <div class="dev__meta">
-                      <h3>HENOK DEMEKE</h3>
-                      <h5>My Printer is not working at all</h5>
+                      <h3>{{task.customer}}</h3>
+                      <h5>{{task.form_name}}</h5>
                     </div>
                   </div>
                   <p class="dev__info">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Cupiditate, ducimus inventore! Sunt, veniam veritatis?
-                    Veritatis placeat, deleniti iure tempore veniam
-                    perspiciatis, soluta cupiditate animi, exercitationem
-                    molestias nam doloremque architecto odit.
-                  </p>
+                    {{ task.short_description|truncatechars:200}}                 </p>
                   <div class="dev__skills">
                     <span class="tag tag--pill tag--main">
                       <small>Hardware Problem</small>
                     </span>
+                   
+                    {% if not task.fixed and not task.reviewed %}
                     <span class="tag" style="background-color: rgb(209, 60, 60);">
                       <small>New Task</small>
                     </span>
-                     
-                   
-                  </div>
-                </a>
-              </div>
-            </div>
-         
-      
-            <div class="column card">
-              <div class="dev">
-                <a href="{% url 'detail' 1 %}" class="card__body">
-                  <div class="dev__profile">
-                    
-                    <div class="dev__meta">
-                      <h3>HENOK DEMEKE</h3>
-                      <h5>My Printer is not working at all</h5>
-                    </div>
-                  </div>
-                  <p class="dev__info">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Cupiditate, ducimus inventore! Sunt, veniam veritatis?
-                    Veritatis placeat, deleniti iure tempore veniam
-                    perspiciatis, soluta cupiditate animi, exercitationem
-                    molestias nam doloremque architecto odit.
-                  </p>
-                  <div class="dev__skills">
-                    <span class="tag tag--pill tag--main">
-                      <small>Hardware Problem</small>
-                    </span>
+                  {% elif task.fixed and not task.reviewed %}
                     <span class="tag" style="background-color: rgb(231, 120, 17);">
                       <small>Pending</small>
                     </span>
-                     
-                   
-                  </div>
-                </a>
-              </div>
-            </div>
-
-
-            <div class="column card">
-              <div class="dev">
-                <a href="{% url 'detail' 1 %}" class="card__body">
-                  <div class="dev__profile">
-                    
-                    <div class="dev__meta">
-                      <h3>HENOK DEMEKE</h3>
-                      <h5>My Printer is not working at all</h5>
-                    </div>
-                  </div>
-                  <p class="dev__info">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Cupiditate, ducimus inventore! Sunt, veniam veritatis?
-                    Veritatis placeat, deleniti iure tempore veniam
-                    perspiciatis, soluta cupiditate animi, exercitationem
-                    molestias nam doloremque architecto odit.
-                  </p>
-                  <div class="dev__skills">
-                    <span class="tag tag--pill tag--main">
-                      <small>Hardware Problem</small>
-                    </span>
+                  {% else %}
                     <span class="tag" style="background-color: rgb(78, 231, 17);">
-                      <small>Finished</small>
+                      <small>Fixed</small>
                     </span>
+                  {% endif %}
+                  
                      
                    
                   </div>
                 </a>
               </div>
             </div>
+         {%endfor%}
+      
+           
           
               
               </div>
@@ -129,7 +77,7 @@
         <ul class="container">
           
          
-          <li><a href="#" class="btn">More &#10095;</a></li>
+          <li><a href="{% url 'allTasks' %}" class="btn">More &#10095;</a></li>
         </ul>
       </div>
     </main>

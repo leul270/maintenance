@@ -20,7 +20,9 @@ class Customer(models.Model):
     department = models.CharField(max_length=100)
     campus = models.CharField(max_length=50)
     updated = models.DateTimeField(auto_now=True)
+    phone_number = models.IntegerField(null= True)
     created = models.DateTimeField(auto_now_add=True)
+
 
     def __str__(self):
         return f"{self.user.first_name} {self.user.last_name}"
@@ -42,6 +44,8 @@ class Technician(models.Model):
     department = models.CharField(max_length=100)
     campus = models.CharField(max_length=50)
     work_experiance = models.IntegerField()
+    phone_number = models.IntegerField(null= True)
+
     SKILL_LEVEL_CHOICES = (
         (1, "Beginner"),
         (2, "Intermediate"),
@@ -75,11 +79,14 @@ class user_form(models.Model):
     can_the_pc_start = models.BooleanField(default=False)
     short_description = models.TextField(null=True)
     form_name = models.CharField(
-        max_length=50,
-    )
+        max_length=50,)
+    fixed =  models.BooleanField(default = False,null=True)
+    reviewed =  models.BooleanField(default = False, null=True)
+
+
 
     def __str__(self):
-        return self.short_description
+        return self.form_name
 
 
 class hardware_form(models.Model):

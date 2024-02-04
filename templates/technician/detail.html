@@ -10,26 +10,10 @@
           <div class="card text-center">
             <div class="card__body dev">
               <img class="avatar avatar--xl" src="{% static 'images/download.png' %}" />
-              <h2 class="dev__name">Dennis Ivanov</h2>
-              <p class="dev__title">Expirance FullStack Developer, Youtuber and Instructor</p>
-              <p class="dev__location">IOT, Hawassa</p>
-              <ul class="dev__social">
-                <li>
-                  <a title="Github" href="#" target="_blank"><i class="im im-github"></i></a>
-                </li>
-                <li>
-                  <a title="Stackoverflow" href="#" target="_blank"><i class="im im-stackoverflow"></i></a>
-                </li>
-                <li>
-                  <a title="Twitter" href="#" target="_blank"><i class="im im-twitter"></i></a>
-                </li>
-                <li>
-                  <a title="LinkedIn" href="#" target="_blank"><i class="im im-linkedin"></i></a>
-                </li>
-                <li>
-                  <a title="Personal Website" href="#" target="_blank"><i class="im im-globe"></i></a>
-                </li>
-              </ul>
+              <h2 class="dev__name">{{single_task.customer}}</h2>
+              <p class="dev__title">{{single_task.customer.phone_number}}</p>
+              <p class="dev__location">{{single_task.customer.campus}}, {{single_task.customer.department}}</p>
+            
             
             </div>
           </div>
@@ -41,12 +25,7 @@
           <div class="devInfo">
             <h3 class="devInfo__title">Details</h3>
             <p class="devInfo__about">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex illum ipsum iusto consequatur. Totam,
-              dolorum fugiat, debitis facere illo nostrum nesciunt maxime, deserunt enim voluptatibus modi natus velit
-              voluptatum. Dicta eritatis exercitationem ut quos a placeat obcaecati? Architecto illum!
-              <br />
-              Amet consectetur adipisicing elit. Veritatis exercitationem ut quos a placeat obcaecati? Architecto
-              illum, atque delectus nemo dolorem inventore ab facilis? Dolor placeat vel delectus ipsam ullam.
+              {{ single_task.short_description}}  
             </p>
           </div>
           <div class="devInfo">
@@ -77,7 +56,7 @@
                 </p>
                 
               </div>
-              <a href="#" class="btn btn--sub btn--lg">Finished </a>
+              <a href="{% url 'fixed' single_task.id%}" class="btn btn--sub btn--lg">Fixed </a>
              
             </div>
           </div>

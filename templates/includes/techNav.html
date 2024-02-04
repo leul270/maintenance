@@ -1,0 +1,30 @@
+{% load static %}
+
+
+<header class="header">
+    <div class="container container--narrow">
+      <a href="/" class="header__logo"> 
+        
+        MAINTENANCE </a>
+      <nav class="header__nav">
+        <input type="checkbox" id="responsive-menu" />
+        <label for="responsive-menu" class="toggle-menu">
+          <span>Menu</span>
+          <div class="toggle-menu__lines"></div>
+        </label>
+        <ul class="header__menu">
+          <li class="header__menuItem">
+            <a href="{%url 'tech_home'%}">HOME</a>
+          </li>
+        
+
+          <li class="header__menuItem">
+            <a href="{% url 'updateProfile' 1 %}">My Account</a>
+          </li>
+          <li class="header__menuItem">
+            <a href="login.html" class="btn btn--sub">Login/Sign Up</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>

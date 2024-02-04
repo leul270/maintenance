@@ -1,0 +1,136 @@
+
+{% extends 'technician/base.html' %}
+{% load static %}
+
+{% block content %}
+
+   
+
+    <!-- Main Section -->
+    <main class="home">
+     
+        <div class="container container--narrow" style="text-align: center; border-bottom:1px ;">
+          
+            
+            <h2 style="color: black;">Recent Activities</h2>
+
+         
+          </div>
+       
+      
+    
+      <!-- Search Result: DevList -->
+      <section class="devlist">
+        <div class="container">
+          <div class="grid grid--three">
+            <div class="column card">
+              <div class="dev">
+                <a href="{% url 'detail' 1 %}" class="card__body">
+                  <div class="dev__profile">
+                    
+                    <div class="dev__meta">
+                      <h3>HENOK DEMEKE</h3>
+                      <h5>My Printer is not working at all</h5>
+                    </div>
+                  </div>
+                  <p class="dev__info">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Cupiditate, ducimus inventore! Sunt, veniam veritatis?
+                    Veritatis placeat, deleniti iure tempore veniam
+                    perspiciatis, soluta cupiditate animi, exercitationem
+                    molestias nam doloremque architecto odit.
+                  </p>
+                  <div class="dev__skills">
+                    <span class="tag tag--pill tag--main">
+                      <small>Hardware Problem</small>
+                    </span>
+                    <span class="tag" style="background-color: rgb(209, 60, 60);">
+                      <small>New Task</small>
+                    </span>
+                     
+                   
+                  </div>
+                </a>
+              </div>
+            </div>
+         
+      
+            <div class="column card">
+              <div class="dev">
+                <a href="{% url 'detail' 1 %}" class="card__body">
+                  <div class="dev__profile">
+                    
+                    <div class="dev__meta">
+                      <h3>HENOK DEMEKE</h3>
+                      <h5>My Printer is not working at all</h5>
+                    </div>
+                  </div>
+                  <p class="dev__info">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Cupiditate, ducimus inventore! Sunt, veniam veritatis?
+                    Veritatis placeat, deleniti iure tempore veniam
+                    perspiciatis, soluta cupiditate animi, exercitationem
+                    molestias nam doloremque architecto odit.
+                  </p>
+                  <div class="dev__skills">
+                    <span class="tag tag--pill tag--main">
+                      <small>Hardware Problem</small>
+                    </span>
+                    <span class="tag" style="background-color: rgb(231, 120, 17);">
+                      <small>Pending</small>
+                    </span>
+                     
+                   
+                  </div>
+                </a>
+              </div>
+            </div>
+
+
+            <div class="column card">
+              <div class="dev">
+                <a href="{% url 'detail' 1 %}" class="card__body">
+                  <div class="dev__profile">
+                    
+                    <div class="dev__meta">
+                      <h3>HENOK DEMEKE</h3>
+                      <h5>My Printer is not working at all</h5>
+                    </div>
+                  </div>
+                  <p class="dev__info">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Cupiditate, ducimus inventore! Sunt, veniam veritatis?
+                    Veritatis placeat, deleniti iure tempore veniam
+                    perspiciatis, soluta cupiditate animi, exercitationem
+                    molestias nam doloremque architecto odit.
+                  </p>
+                  <div class="dev__skills">
+                    <span class="tag tag--pill tag--main">
+                      <small>Hardware Problem</small>
+                    </span>
+                    <span class="tag" style="background-color: rgb(78, 231, 17);">
+                      <small>Finished</small>
+                    </span>
+                     
+                   
+                  </div>
+                </a>
+              </div>
+            </div>
+          
+              
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="pagination">
+        <ul class="container">
+          
+         
+          <li><a href="#" class="btn">More &#10095;</a></li>
+        </ul>
+      </div>
+    </main>
+{% endblock%}

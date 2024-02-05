@@ -1,12 +1,108 @@
 from django import forms
+from django.contrib.auth.forms import AuthenticationForm, UsernameField
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from .models import *
 
 
+class UserLoginForm(AuthenticationForm):
+    def __init__(self, *args, **kwargs):
+        super(UserLoginForm, self).__init__(*args, **kwargs)
+
+    username = UsernameField(
+        widget=forms.TextInput(
+            attrs={
+                "class": "input input--text",
+                "placeholder": "Enter your username...",
+                "id": "formInput#text",
+            }
+        )
+    )
+    password = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs={
+                "class": "input input--password",
+                "placeholder": "••••••••",
+                "id": "formInput#password",
+            }
+        )
+    )
+
+
 class CustomerResgistrationForm(UserCreationForm):
-    department = forms.CharField(max_length=50)
-    campus = forms.CharField(max_length=50)
+    first_name = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "class": "input input--text",
+                "placeholder": "Enter your First name...",
+                "id": "formInput#first_name",
+            }
+        )
+    )
+    last_name = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "class": "input input--text",
+                "placeholder": "Enter your Last name...",
+                "id": "formInput#last_name",
+            }
+        )
+    )
+    username = UsernameField(
+        widget=forms.TextInput(
+            attrs={
+                "class": "input input--text",
+                "placeholder": "Enter your username...",
+                "id": "formInput#username",
+            }
+        )
+    )
+    email = forms.EmailField(
+        widget=forms.EmailInput(
+            attrs={
+                "class": "input input--email",
+                "placeholder": "Enter your username...",
+                "id": "formInput#email",
+            }
+        )
+    )
+    password1 = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs={
+                "class": "input input--password",
+                "placeholder": "••••••••",
+                "id": "formInput#password1",
+            }
+        )
+    )
+    password2 = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs={
+                "class": "input input--password",
+                "placeholder": "••••••••",
+                "id": "formInput#password2",
+            }
+        )
+    )
+
+    campus = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "class": "input input--text",
+                "placeholder": "Enter your Campus...",
+                "id": "formInput#campus",
+            }
+        )
+    )
+    department = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "class": "input input--text",
+                "placeholder": "Enter your Department...",
+                "id": "formInput#department",
+            }
+        )
+    )
 
     class Meta(UserCreationForm.Meta):
         model = User
@@ -35,8 +131,79 @@ class CustomerResgistrationForm(UserCreationForm):
 
 
 class AdministratorResgistrationForm(UserCreationForm):
-    department = forms.CharField(max_length=50)
-    campus = forms.CharField(max_length=50)
+    first_name = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "class": "input input--text",
+                "placeholder": "Enter your First name...",
+                "id": "formInput#first_name",
+            }
+        )
+    )
+    last_name = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "class": "input input--text",
+                "placeholder": "Enter your Last name...",
+                "id": "formInput#last_name",
+            }
+        )
+    )
+    username = UsernameField(
+        widget=forms.TextInput(
+            attrs={
+                "class": "input input--text",
+                "placeholder": "Enter your username...",
+                "id": "formInput#username",
+            }
+        )
+    )
+    email = forms.EmailField(
+        widget=forms.EmailInput(
+            attrs={
+                "class": "input input--email",
+                "placeholder": "Enter your username...",
+                "id": "formInput#email",
+            }
+        )
+    )
+    password1 = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs={
+                "class": "input input--password",
+                "placeholder": "••••••••",
+                "id": "formInput#password1",
+            }
+        )
+    )
+    password2 = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs={
+                "class": "input input--password",
+                "placeholder": "••••••••",
+                "id": "formInput#password2",
+            }
+        )
+    )
+
+    campus = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "class": "input input--text",
+                "placeholder": "Enter your Campus...",
+                "id": "formInput#campus",
+            }
+        )
+    )
+    department = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "class": "input input--text",
+                "placeholder": "Enter your Department...",
+                "id": "formInput#department",
+            }
+        )
+    )
 
     class Meta(UserCreationForm.Meta):
         model = User
@@ -65,21 +232,121 @@ class AdministratorResgistrationForm(UserCreationForm):
 
 
 class TechnicianResgistrationForm(UserCreationForm):
-    department = forms.CharField(max_length=50)
-    campus = forms.CharField(max_length=50)
-    phone_number = forms.IntegerField()
+    first_name = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "class": "input input--text",
+                "placeholder": "Enter your First name...",
+                "id": "formInput#first_name",
+            }
+        )
+    )
+    last_name = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "class": "input input--text",
+                "placeholder": "Enter your Last name...",
+                "id": "formInput#last_name",
+            }
+        )
+    )
+    username = UsernameField(
+        widget=forms.TextInput(
+            attrs={
+                "class": "input input--text",
+                "placeholder": "Enter your username...",
+                "id": "formInput#username",
+            }
+        )
+    )
+    email = forms.EmailField(
+        widget=forms.EmailInput(
+            attrs={
+                "class": "input input--email",
+                "placeholder": "Enter your username...",
+                "id": "formInput#email",
+            }
+        )
+    )
+    password1 = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs={
+                "class": "input input--password",
+                "placeholder": "••••••••",
+                "id": "formInput#password1",
+            }
+        )
+    )
+    password2 = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs={
+                "class": "input input--password",
+                "placeholder": "••••••••",
+                "id": "formInput#password2",
+            }
+        )
+    )
 
-    work_experiance = forms.IntegerField()
+    campus = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "class": "input input--text",
+                "placeholder": "Enter your Campus...",
+                "id": "formInput#campus",
+            }
+        )
+    )
+    department = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "class": "input input--text",
+                "placeholder": "Enter your Department...",
+                "id": "formInput#department",
+            }
+        )
+    )
+
+    work_experiance = forms.IntegerField( 
+        widget=forms.NumberInput(
+            attrs={
+                "class": "input input--text",
+                "placeholder": "Enter your Department...",
+                "id": "formInput#experiance",
+            }
+        ))
     SKILL_LEVEL_CHOICES = (
         (1, "Beginner"),
         (2, "Intermediate"),
         (3, "Advanced"),
     )
-    skill_level = forms.ChoiceField(choices=SKILL_LEVEL_CHOICES)
-    short_description = forms.CharField(widget=forms.Textarea)
+    skill_level = forms.ChoiceField(choices=SKILL_LEVEL_CHOICES,   
+        widget=forms.Select(
+            attrs={
+                "class": "uk-select",
+                "aria-label":"Select",
+                "placeholder": "",
+                "id": "formInput#level",
+            }
+        ))
+    short_description = forms.CharField(    
+        widget=forms.Textarea(
+            attrs={
+                "class": "input input--select",
+                "placeholder": "Description...",
+                "id": "formInput#description",
+                
+            }
+        ))
 
     administrator = forms.ModelChoiceField(
-        queryset=Administrator.objects.all(), required=False
+        queryset=Administrator.objects.all(), required=False,
+         widget=forms.Select(
+            attrs={
+                "class": "input input--text",
+                "placeholder": "",
+                "id": "formInput#admin",
+            }
+        )
     )
 
     class Meta(UserCreationForm.Meta):
@@ -94,7 +361,6 @@ class TechnicianResgistrationForm(UserCreationForm):
             "password2",
             "department",
             "campus",
-            'phone_number'
         ]
 
     def save(self, commit=True):
@@ -104,7 +370,6 @@ class TechnicianResgistrationForm(UserCreationForm):
         campus = self.cleaned_data["campus"]
         skill_level = self.cleaned_data["skill_level"]
         administrator = self.cleaned_data["administrator"]
-        phone_number = self.cleaned_data["phone_number"]
         technician = Technician.objects.create(
             user=user,
             department=department,
@@ -112,7 +377,7 @@ class TechnicianResgistrationForm(UserCreationForm):
             work_experiance=work_experiance,
             skill_level=skill_level,
             administrator=administrator,
-            phone_number=phone_number,
         )
+        technician.is_technician = True
         technician = technician.save()
         return technician

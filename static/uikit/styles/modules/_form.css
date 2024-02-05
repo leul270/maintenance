@@ -180,3 +180,50 @@ textarea.input:active {
 .form__field--action > *:not(:last-child) {
   margin-right: 1rem;
 }
+
+select.input,
+select.input:focus,
+select.input:active {
+  min-width: 24rem;
+  width: 100%;
+  padding: 1.2rem 1.5rem;
+  border-radius: 0.5rem;
+  border: 2px solid var(--color-light);
+  transition: all 0.3s ease-in-out;
+  background-color: var(--color-bg);
+  outline: none;
+}
+
+select.input:focus,
+select.input:active {
+  border: 2px solid var(--color-main);
+}
+
+/* Styling for options within a select */
+select.input option {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* Custom styling for dropdown arrow */
+select.input::-ms-expand {
+  display: none;
+}
+
+/* Custom styling for the dropdown arrow in non-IE browsers */
+select.input::after {
+  content: '\25BC';
+  /* Unicode character for a downward-pointing triangle */
+  position: absolute;
+  top: 50%;
+  right: 1.5rem;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--color-text);
+}
+
+/* Adjust the appearance of the selected option */
+select.input option:checked {
+  background-color: var(--color-main-light);
+  color: var(--color-main);
+}

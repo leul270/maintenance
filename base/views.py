@@ -97,6 +97,3 @@ def administrator_home(request, id):
 #         'hardwareForm': hardware_form,
 #         'softwareForm': software_form
 #     })
-def home(request):
-    
-    return render(request, "login1.html")

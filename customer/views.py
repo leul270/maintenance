@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from base.forms import *
+from .models import *
 # Create your views here.
 # def create_form(request):
 #     form = UserForm()
@@ -18,8 +19,22 @@ def maintenance(request):
     context = {}
     return render(request, "user/maintenance.html", context)
 def maintenance_form(request):
-    context = {}
-    return render(request, "user/maintenance_form.html", context)
+    form =  Maintenance()
+    customer = Customer.objects.get(user_id=2)  #request.user
+    if request.method == 'POST':
+        form.form_name = request.POST['form_name']
+        form.customer = customer
+        form.short_description = request.POST['short_description']
+        form.short_description = request.POST['device_problem']
+        form.save()
+        return redirect('customer_home')
+       
+
+
+            
+    
+
+    return render(request, "user/maintenance_form.html")
 def network(request):
     context = {}
     return render(request, "user/network.html", context)
@@ -32,7 +47,7 @@ def software(request):
 def software_form(request):
     context = {}
     return render(request, "user/software_form.html", context)
-def customer_registration(request):
+# def customer_registration(request):
     customer=customer.objects.all()
     if request.method == 'POST':
         

@@ -12,7 +12,7 @@
               <img class="avatar avatar--xl" src="{% static 'images/download.png' %}" />
               <h2 class="dev__name">{{single_task.customer}}</h2>
               <p class="dev__title">{{single_task.customer.phone_number}}</p>
-              <p class="dev__location">{{single_task.customer.campus}}, {{single_task.customer.department}}</p>
+              <p class="dev__location">{{single_task.customer.department}}, {{single_task.customer.campus}}</p>
             
             
             </div>
@@ -28,41 +28,72 @@
               {{ single_task.short_description}}  
             </p>
           </div>
-          <div class="devInfo">
-            <h3 class="devInfo__title">Skills</h3>
-            <div class="devInfo__skills">
-              <div class="devSkill">
-                <h4 class="devSkill__title">JavaScript</h4>
-                <p class="devSkill__info">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae neque voluptatum ut? Quaerat, ea
-                  cumque! Dolorum provident esse molestias commodi odit sapiente quod quasi corrupti obcaecati? Nobis
-                  ex temporibus quaerat!
-                </p>
-              </div>
-              <div class="devSkill">
-                <h4 class="devSkill__title">React</h4>
-                <p class="devSkill__info">
-                  Smet consectetur adipisicing elit. Omnis, nihil? Accusamus aspernatur aut debitis vitae quaerat
-                  nihil fugiat, doloremque nesciunt alias pariatur maxime unde, nam saepe laborum at odit labore.
-                </p>
-              </div>
-              <div class="devSkill">
-                <h4 class="devSkill__title">Express(Nodejs)</h4>
-                <p class="devSkill__info">
-                  Auae error deleniti aperiam enim nisi nesciunt, ratione eveniet eos fuga ad recusandae mollitia!
-                  Facere earum, distinctio nihil recusandae ipsum nesciunt. Possimus, ex. Officia maxime nihil
-                  inventore cum tenetur! Veritatis sapiente libero ducimus nesciunt itaque, placeat inventore sint
-                  blanditiis?
-                </p>
-                
-              </div>
-              <a href="{% url 'fixed' single_task.id%}" class="btn btn--sub btn--lg">Fixed </a>
-             
-            </div>
+
+
+
+   
+       
+            <main class="formPage my-xl">
+              <h3 class="devInfo__title">Fill out the Form Below</h3>
+     
+            <div class="formWrapper">
+
+              <form class="form" action="{% url 'isFixed' single_task.id %}" method="POST">
+{% csrf_token %}
+                <!-- Textarea -->
+                <div class="form__field">
+                  <label for="formInput#text">Identified Problem Description </label>
+                  <textarea class="input input--textarea" name="short_description" id="formInput#textarea" placeholder="Description..."></textarea>
+                </div>
+              
+                <div class="form__field">
+                  <label for="formInput ">Is Fixed: </label>
+                  <select class="input input--text" name="is_fixed" onchange="toggleTextareas()">
+                    <option value="option1">None</option>
+                    <option value="True">Yes</option>
+                    <option value="False">No</option>
+                  </select>
+                </div>
+              
+                <div class="form__field" id="reasonNotFixed" style="display:none;">
+                  <label for="formInput#text">Fill the reason why it is not fixed </label>
+                  <textarea 
+                  class="input input--textarea" name="reason" id="formInput#textarea" placeholder="Description..."></textarea>
+                </div>
+              
+                <div class="form__field" id="alternativeSolution" style="display:none;">
+                  <label for="formInput#text">Suggest Alternative Solution </label>
+                  <textarea class="input input--textarea" name="solution" id="formInput#textarea" placeholder="Description..."></textarea>
+                </div>
+              
+                <input class="btn btn--sub btn--lg my-md" type="submit" value="Submit" />
+              
+              </form>
           </div>
+       
+            </main>
+           
+        
         
         </div>
       </div>
     </div>
   </main>
+
+
+  <script>
+    function toggleTextareas() {
+      var selectElement = document.querySelector('select');
+      var reasonNotFixed = document.getElementById('reasonNotFixed');
+      var alternativeSolution = document.getElementById('alternativeSolution');
+  
+      if (selectElement.value === 'False') {
+        reasonNotFixed.style.display = 'block';
+        alternativeSolution.style.display = 'block';
+      } else {
+        reasonNotFixed.style.display = 'none';
+        alternativeSolution.style.display = 'none';
+      }
+    }
+  </script>
 {%endblock%}

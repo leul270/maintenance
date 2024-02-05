@@ -1,7 +1,7 @@
 from django.db import models
 from base.models import *
+# from django.contrib.auth.models import AbstractUser
 
-# Create your models here.
 class UserForm(models.Model):
     form_name = models.CharField(
                                 max_length=50,)
@@ -24,7 +24,7 @@ class UserForm(models.Model):
 
 
 
-    def __str__(self):
-        return self.form_name
+#     def __str__(self):
+#         return self.form_name
 
 

@@ -7,11 +7,8 @@
   </head>
   <body>
     {% extends 'main.html' %} {% block content %}
-    <h1>this is user page</h1>
-    <a href="{% url 'create_form' %}">create_form</a>
-    <!-- <a href="">view the form</a> -->
-    {% for form in form %}
-    <div>{{USERFORM}}</div>
-    {% endfor %} {% endblock %}
+    <h1>this is customer home page</h1>
+
+    {% endblock %}
   </body>
 </html>

@@ -26,19 +26,15 @@
   </head>
 
   <body>
-
-
-
     <style>
       .form {
         display: flex;
         flex-direction: column;
       }
-  
+
       .form label {
         display: inline-block;
         margin-bottom: 5px;
-        
       }
     </style>
     <main class="formPage my-xl">
@@ -47,11 +43,13 @@
           <a class="backButton" href="#"><i class="im im-angle-left"></i></a>
           <br />
 
-          <form class="form" method="POST" action="{% url 'maintenanceForm' %}">
-        
-          {%csrf_token%}
+          <form
+            class="form"
+            method="POST"
+            action="{% url 'maintenance_form' %}"
+          >
+            {%csrf_token%}
 
-      
             <div class="form__field">
               <label for="formInput#text">Form Name </label>
               <input
@@ -64,49 +62,72 @@
             </div>
 
             <!-- Input:Text -->
-            <div class="form__field">
+            <fieldset>
+              <div class="form__field">
+                <label for="computer">Computer:</label>
+                <input
+                  type="radio"
+                  id="computer"
+                  name="device_problem"
+                  value="computer"
+                />
 
-              <label for="computer">Computer:</label>
-              <input type="radio" id="computer" name="device_problem" value="computer">
-        
- 
-          
-              <label for="printer">Printer:</label>
-              <input style="margin: 10px;" type="radio" id="printer" name="device_problem" value="printer">
-          
-             
-          
-              <label for="scanner">Scanner:</label>
-              <input type="radio" id="scanner" name="device_problem" value="scanner">
-          
-      
-          
-              <label for="photocopier">Photocopier:</label>
-              <input type="radio" id="photocopier" name="device_problem" value="photo_copy">
-          
-    
-              <label for="others">Others:</label>
-              <input type="radio" id="others" name="device_problem" value="others">
+                <label for="printer">Printer:</label>
+                <input
+                  style="margin: 10px"
+                  type="radio"
+                  id="printer"
+                  name="device_problem"
+                  value="printer"
+                />
+
+                <label for="scanner">Scanner:</label>
+                <input
+                  type="radio"
+                  id="scanner"
+                  name="device_problem"
+                  value="scanner"
+                />
+
+                <label for="photocopier">Photocopier:</label>
+                <input
+                  type="radio"
+                  id="photocopier"
+                  name="device_problem"
+                  value="photo_copy"
+                />
+
+                <label for="others">Others:</label>
+                <input
+                  type="radio"
+                  id="others"
+                  name="device_problem"
+                  value="others"
+                />
+              </div>
+            </fieldset>
+
+            <div class="form__field">
+              <label for="formInput#text">Short Description: </label>
+
+              <textarea
+                class="input input--text"
+                id="formInput#text"
+                type="text"
+                name="short_description"
+                placeholder="Enter text"
+              >
+              </textarea>
             </div>
 
-
-           
-
             <div class="form__field">
-              <label for="formInput#text">Text Field: </label>
-            
-
-              <textarea  class="input input--text"
-              id="formInput#text"
-              type="text"
-              name="short_description"
-              placeholder="Enter text"> </textarea>
-            </div>
-
-            <div class="form__field">
-
               <label for="is_goverment">Is goverment</label>
-              <input type="radio" id="is_goverment" name="is_goverment" value="is_goverment">
+              <input
+                type="radio"
+                id="is_goverment"
+                name="is_goverment"
+                value="is_goverment"
+              />
             </div>
 
             <input

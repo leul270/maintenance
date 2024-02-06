@@ -26,7 +26,6 @@
   </head>
 
   <body>
-    {% csrf_token%}
     <!-- Header Section -->
 
     <!-- Main Section -->
@@ -36,33 +35,138 @@
           <a class="backButton" href="#"><i class="im im-angle-left"></i></a>
           <br />
 
-          <form class="form" method="POST">
+          <form class="form" method="POST" action="{% url 'network_form' %}">
+            {% csrf_token%}
             <!-- Input:Text -->
             <div class="form__field">
-              <label for="formInput#text">Text Field: </label>
+              <label for="formInput#text">Form Name: </label>
               <input
                 class="input input--text"
                 id="formInput#text"
                 type="text"
-                name="text"
-                placeholder="Enter text"
+                name="form_name"
+                placeholder="Form Name"
               />
             </div>
 
-            <!-- Input:Text -->
             <div class="form__field">
-              <label for="formInput#text">Text Field: </label>
+              <h5 class="header__logo">Choose Type of Network Problem</h5>
+              <label for="slow_internet_connection"
+                >Slow Internet Connection:</label
+              >
               <input
-                class="input input--text"
-                id="formInput#text"
-                type="text"
-                name="text"
-                placeholder="Enter text"
+                type="radio"
+                id="slow_internet_connection"
+                name="type_of_network_problem"
+                value="slow_internet_connection"
+              />
+
+              <label for="network_connectivity_issues"
+                >Network Connectivity Issues:</label
+              >
+              <input
+                style="margin: 10px"
+                type="radio"
+                id="network_connectivity_issues"
+                name="type_of_network_problem"
+                value="network_connectivity_issues"
+              />
+
+              <label for="wi_fi_connection_problems"
+                >Wi-Fi Connection Problems:</label
+              >
+              <input
+                type="radio"
+                id="wi_fi_connection_problems"
+                name="type_of_network_problem"
+                value="wi_fi_connection_problems"
+              />
+
+              <label for="network_outage">Network Outage:</label>
+              <input
+                type="radio"
+                id="network_outage"
+                name="type_of_network_problem"
+                value="network_outage"
+              />
+
+              <label for="others">Others:</label>
+              <input
+                type="radio"
+                id="others"
+                name="type_of_network_problem"
+                value="others"
               />
             </div>
 
-            <!-- Input:Text -->
             <div class="form__field">
+              <h8 class="header__logo"
+                >Have you tried any Troubleshooting Steps
+              </h8>
+              <label for="rebooted_modem/router">Rebooted modem/router:</label
+              ><br />
+              <input
+                type="checkbox"
+                id="rebooted_modem_router"
+                name="rebooted_modem_router"
+                value="rebooted_modem_router"
+              />
+              <label for="checked_network_cables">Checked network cables:</label
+              ><br />
+              <input
+                type="checkbox"
+                id="checked_network_cables"
+                name="checked_network_cables"
+                value="checked_network_cables"
+              />
+              <label for="restarted_computer_device"
+                >Restarted computer/device:</label
+              ><br />
+              <input
+                type="checkbox"
+                id="restarted_computer_device"
+                name="restarted_computer_device"
+                value="restarted_computer_device"
+              />
+              <label for="reset_network_settings"
+                >Reset network settings: </label
+              ><br />
+              <input
+                type="checkbox"
+                id="reset_network_settings"
+                name="reset_network_settings"
+                value="reset_network_settings"
+              /><br />
+            </div>
+
+            <div class="form__field">
+              <label for="formInput#text">Short Description: </label>
+
+              <textarea
+                class="input input--text"
+                id="formInput#text"
+                type="text"
+                name="short_description"
+                placeholder="Enter text"
+              >
+              </textarea>
+            </div>
+
+            <div class="form__field">
+              <label for="formInput#text">Aditional comment: </label>
+
+              <textarea
+                class="input input--text"
+                id="formInput#text"
+                type="text"
+                name="aditional_comment"
+                placeholder="Enter text"
+              >
+              </textarea>
+            </div>
+
+            <!-- Input:Text -->
+            <!-- <div class="form__field">
               <label for="formInput#text">Text Field: </label>
               <input
                 class="input input--text"
@@ -71,7 +175,19 @@
                 name="text"
                 placeholder="Enter text"
               />
-            </div>
+            </div> -->
+
+            <!-- Input:Text -->
+            <!-- <div class="form__field">
+              <label for="formInput#text">Text Field: </label>
+              <input
+                class="input input--text"
+                id="formInput#text"
+                type="text"
+                name="text"
+                placeholder="Enter text"
+              />
+            </div> -->
             <input
               class="btn btn--sub btn--lg my-md"
               type="submit"

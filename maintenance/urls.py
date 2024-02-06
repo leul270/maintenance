@@ -21,6 +21,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('base.urls')),
     path('technician/', include('technician.urls')),
+<<<<<<< HEAD
+=======
     path('customer/', include('customer.urls')),
 
+>>>>>>> 9cfd1d314a68aa7d2adce4e1e53a26df067c5e55
 ]

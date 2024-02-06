@@ -2,9 +2,17 @@ from django.shortcuts import render, redirect
 from django.urls import path
 from .forms import *
 from django.contrib.auth.decorators import login_required
-
+from django.contrib.auth.views import LoginView
 # Create your views here.
 
+# class Login(LoginView):
+#     def get_success_url(self):
+#         user = self.request.user
+#         # Add your condition here
+#         # if user.is_tec:
+#         #     return '/custom_redirect_url/'
+#         # else:
+#         #     return super().get_success_url()
 
 def customer_registration(request):
     template_name = "user/registration.html"

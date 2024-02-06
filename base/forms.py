@@ -322,7 +322,7 @@ class TechnicianResgistrationForm(UserCreationForm):
     skill_level = forms.ChoiceField(choices=SKILL_LEVEL_CHOICES,   
         widget=forms.Select(
             attrs={
-                "class": "uk-select",
+                "class": "form-select",
                 "aria-label":"Select",
                 "placeholder": "",
                 "id": "formInput#level",

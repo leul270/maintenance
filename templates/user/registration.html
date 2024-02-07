@@ -1,5 +1,7 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
 
 <head>
     {% load static %}
@@ -81,3 +83,145 @@
 </body>
 
 </html>
+=======
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Favicon -->
+    <link
+      rel="shortcut icon"
+      href="{% static 'images/favicon.ico' %}"
+      type="image/x-icon"
+    />
+    <!-- Icon - IconMonster -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css"
+    />
+    <!-- Mumble UI -->
+    <link rel="stylesheet" href="{% static 'uikit/styles/uikit.css' %}" />
+    <!-- Dev Search UI -->
+    <link rel="stylesheet" href="{% static 'styles/app.css' %}" />
+
+    <title>CUSTOMER REGISTRATION</title>
+  </head>
+
+  <body>
+    {% csrf_token%}
+    <!-- Header Section -->
+    <header class="header">
+      <div class="container container--narrow">
+        <a href="/" class="header__logo"> MAINTENANCE</a>
+        <h5 class="header__logo">customer registration </h5>
+        <nav class="header__nav">
+          <input type="checkbox" id="responsive-menu" />
+
+          
+           
+            <li class="header__menuItem">
+              <a href="login.html" class="btn btn--sub">Login/Sign Up</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Section -->
+    <main class="formPage my-xl">
+      <div class="content-box">
+        <div class="formWrapper">
+          <a class="backButton" href="#"><i class="im im-angle-left"></i></a>
+          <br />
+
+          <form class="form" method="POST">
+             
+            <!-- Input:Text -->
+            <div class="form__field">
+              <label for="formInput#text"> first name : </label>
+              <input
+                class="input input--text"
+                id="formInput#text"
+                type="text"
+                name="first_name"
+                placeholder="Enter your first name"
+              />
+            </div>
+
+            <!-- Input:Text -->
+            <div class="form__field">
+              <label for="formInput#text">last name : </label>
+              <input
+                class="input input--text"
+                id="formInput#text"
+                type="text"
+                name="last_name"
+                placeholder="enter your last name"
+              />
+            </div>
+            <div class="form__field">
+                <label for="formInput#text">Department : </label>
+                <input
+                  class="input input--text"
+                  id="formInput#text"
+                  type="text"
+                  name="department"
+                  placeholder="enter your Department "
+                />
+              </div>
+              <div class="form__field">
+                <label for="formInput#text">campus : </label>
+                <input
+                  class="input input--text"
+                  id="formInput#text"
+                  type="text"
+                  name="campus"
+                  placeholder="enter your campus"
+                />
+              </div>
+
+            <!-- Input:Text -->
+            <div class="form__field">
+              <label for="email">Email: </label>
+              <input
+                class="input input--text"
+                id="formInput#text"
+                type="email"
+                name="email"
+                placeholder="ex:name@gmail.com"
+              />
+            </div>
+
+            <div class="form__field">
+                <label for="password">password: </label>
+                <input
+                  class="input input--text"
+                  id="formInput#text"
+                  type="password"
+                  name="password1"
+                  placeholder="enter your password"
+                />
+              </div>
+              <div class="form__field">
+                <label for="password">confirm your password: </label>
+                <input
+                  class="input input--text"
+                  id="formInput#text"
+                  type="password"
+                  name="password2"
+                  placeholder="confirm your password"
+                />
+              </div>
+           <a href="{% url 'customer_home' %}"> <input
+            class="btn btn--sub btn--lg my-md"
+            type="submit"
+            value="Submit"
+          /></a>
+          </form>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
+>>>>>>> 9cfd1d314a68aa7d2adce4e1e53a26df067c5e55

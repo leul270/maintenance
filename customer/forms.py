@@ -9,3 +9,12 @@ class UserForm(ModelForm):
         model = UserForm
         fields = "__all__"
 
+    #  def save(self, commit=True):
+
+    #     reset_network_settings = self.cleaned_data["reset_network_settings"]
+    #     userform = UserForm.objects.create(
+    #         user=user, department=department, campus=campus
+    #     )
+    #     customer = customer.save()
+    #     return user
+

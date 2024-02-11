@@ -20,13 +20,7 @@ urlpatterns = [
         views.administrator_registration,
         name="administrator_registration",
     ),
-    path(
-        "login/",
-        LoginView.as_view(
-            template_name="login.html", authentication_form=UserLoginForm
-        ),
-        name="login",
-    ),
+    path("login/", views.login_user, name="login"),
     path("user_home/<str:id>/", views.user_home, name="user_home"),
     path("technician_home/<str:id>/", views.technician_home, name="technician_home"),
     path(
@@ -34,7 +28,7 @@ urlpatterns = [
         views.administrator_home,
         name="administrator_home",
     ),
-      path(
+    path(
         "login1",
         views.home,
         name="login1",

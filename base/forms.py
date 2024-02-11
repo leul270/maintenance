@@ -5,11 +5,8 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import *
 
 
-class UserLoginForm(AuthenticationForm):
-    def __init__(self, *args, **kwargs):
-        super(UserLoginForm, self).__init__(*args, **kwargs)
-
-    username = UsernameField(
+class UserLoginForm(forms.Form):
+    username = forms.CharField(
         widget=forms.TextInput(
             attrs={
                 "class": "input input--text",
@@ -119,13 +116,14 @@ class CustomerResgistrationForm(UserCreationForm):
         ]
 
     def save(self, commit=True):
-        user = super().save()
+        user = super().save(commit=False)
+        user.is_customer = True
+        user.save()
         department = self.cleaned_data["department"]
         campus = self.cleaned_data["campus"]
         customer = Customer.objects.create(
             user=user, department=department, campus=campus
         )
-        customer.is_customer = True
         customer = customer.save()
         return user
 
@@ -220,13 +218,15 @@ class AdministratorResgistrationForm(UserCreationForm):
         ]
 
     def save(self, commit=True):
-        user = super().save()
+        user = super().save(commit=False)
+        user.is_staff = True
+        user.save()
+        print(user.is_staff)
         department = self.cleaned_data["department"]
         campus = self.cleaned_data["campus"]
         administrator = Administrator.objects.create(
             user=user, department=department, campus=campus
         )
-        administrator.is_staff = True
         administrator = administrator.save()
         return user
 
@@ -322,7 +322,7 @@ class TechnicianResgistrationForm(UserCreationForm):
     skill_level = forms.ChoiceField(choices=SKILL_LEVEL_CHOICES,   
         widget=forms.Select(
             attrs={
-                "class": "form-select",
+                "class": "uk-select",
                 "aria-label":"Select",
                 "placeholder": "",
                 "id": "formInput#level",
@@ -338,16 +338,6 @@ class TechnicianResgistrationForm(UserCreationForm):
             }
         ))
 
-    administrator = forms.ModelChoiceField(
-        queryset=Administrator.objects.all(), required=False,
-         widget=forms.Select(
-            attrs={
-                "class": "input input--text",
-                "placeholder": "",
-                "id": "formInput#admin",
-            }
-        )
-    )
 
     class Meta(UserCreationForm.Meta):
         model = User
@@ -364,20 +354,19 @@ class TechnicianResgistrationForm(UserCreationForm):
         ]
 
     def save(self, commit=True):
-        user = super().save()
+        user = super().save(commit=False)
+        user.is_technician = True
+        user.save()
         department = self.cleaned_data["department"]
         work_experiance = self.cleaned_data["work_experiance"]
         campus = self.cleaned_data["campus"]
         skill_level = self.cleaned_data["skill_level"]
-        administrator = self.cleaned_data["administrator"]
         technician = Technician.objects.create(
             user=user,
             department=department,
             campus=campus,
             work_experiance=work_experiance,
-            skill_level=skill_level,
-            administrator=administrator,
+            skill_level=skill_level
         )
-        technician.is_technician = True
         technician = technician.save()
         return technician

@@ -30,23 +30,40 @@ def network(request):
 @csrf_protect
 def network_form(request):
     form =  Network()
-    customer = Customer.objects.get(user_id=2)  #request.user
+    customer = Customer.objects.get(user_id=5)  #request.user
     if request.method == 'POST':
+        # print(request.POST.get("reset_network_settings"))
         form.form_name = request.POST['form_name']
         form.customer = customer
         form.type_of_network_problem = request.POST['type_of_network_problem']
-        if request.POST.get('troubleshooting_steps'):
-            form.rebooted_modem_router= request.POST.get('troubleshooting_steps')
-            form.checked_network_cables=request.POST.get('troubleshooting_steps')
-            form.restarted_computer_device=request.POST.get('troubleshooting_steps')
-            form.reset_network_settings=request.POST.get('troubleshooting_steps')
-            
+
+
+        if request.POST.get('rebooted_modem_router'):
+            form.rebooted_modem_router= True
+        else:
+            form.rebooted_modem_router= False
+
+        if request.POST.get('checked_network_cables'):
+            form.checked_network_cables= True
+        else:
+            form.checked_network_cables= False
+
+        if request.POST.get('restarted_computer_device'):
+            form.restarted_computer_device= True
+        else:
+            form.restarted_computer_device= False
+
+        if request.POST.get('reset_network_settings'):
+            form.reset_network_settings= True
+        else:
+            form.reset_network_settings= False
+
         form.short_description = request.POST['short_description']
         form.aditional_comment = request.POST['aditional_comment']
 
         form.save()
         return redirect('network')
-
+    
     context = {}
     return render(request, "user/network_form.html", context)
 def software(request):

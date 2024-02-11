@@ -1,18 +1,40 @@
 from django.shortcuts import render, redirect
 from django.urls import path
+from django.contrib import messages
+from django.contrib.auth import authenticate, login
+from django.urls import reverse_lazy
 from .forms import *
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
-# Create your views here.
 
-# class Login(LoginView):
-#     def get_success_url(self):
-#         user = self.request.user
-#         # Add your condition here
-#         # if user.is_tec:
-#         #     return '/custom_redirect_url/'
-#         # else:
-#         #     return super().get_success_url()
+
+def login_user(request):
+    if request.method == 'POST':
+        form = UserLoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                if user.is_customer:
+                    dashboard_redirect = 'customer_home'
+                elif user.is_technician:
+                    dashboard_redirect = 'tech_home'
+                elif user.is_staff:
+                    dashboard_redirect = 'admin:index'
+                else:
+                    # Handle other user types if needed
+                    messages.error(request, 'Invalid user type')
+                    return redirect('login')
+                
+                login(request, user)
+                return redirect(dashboard_redirect)
+            else:
+                messages.error(request, 'Invalid login credentials')
+                return redirect('login')
+    else:
+        form = UserLoginForm()
+    return render(request, 'login.html', {'form': form})
 
 def customer_registration(request):
     template_name = "user/registration.html"
@@ -20,10 +42,8 @@ def customer_registration(request):
     if request.method == "POST":
         form = CustomerResgistrationForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            return redirect(
-                "home"
-            )  # Replace 'home' with the actual URL you want to redirect to after registration
+            form.save()
+            return redirect("login")
     else:
         form = CustomerResgistrationForm()
 
@@ -37,9 +57,7 @@ def technician_registration(request):
         form = TechnicianResgistrationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            return redirect(
-                "home"
-            )  # Replace 'home' with the actual URL you want to redirect to after registration
+            return redirect("login") # Replace 'home' with the actual URL you want to redirect to after registration
     else:
         form = TechnicianResgistrationForm()
 
@@ -53,9 +71,7 @@ def administrator_registration(request):
         form = AdministratorResgistrationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            return redirect(
-                "home"
-            )  # Replace 'home' with the actual URL you want to redirect to after registration
+            return redirect("login")
     else:
         form = AdministratorResgistrationForm()
 

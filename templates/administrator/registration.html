@@ -29,7 +29,7 @@
                 <p>Create a new</p>
             </div>
     
-            <form action="{% url 'customer_registration' %}" method="post">
+            <form action="{% url 'administrator_registration' %}" method="post">
                 {% csrf_token %}
                 <div class="form__field">
                     <label for="formInput#first_name">First Name: </label>

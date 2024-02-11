@@ -9,7 +9,7 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     is_staff = models.BooleanField(default=False)
     is_technician = models.BooleanField(default=False)
-    is_customer = models.BooleanField(default=True)
+    is_customer = models.BooleanField(default=False)
 
     def __str__(self):
         return self.username
@@ -42,7 +42,6 @@ class Administrator(models.Model):
 
 class Technician(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-    
     department = models.CharField(max_length=100)
     campus = models.CharField(max_length=50)
     work_experiance = models.IntegerField()
@@ -57,9 +56,6 @@ class Technician(models.Model):
     short_description = models.TextField(null=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
-    administrator = models.ForeignKey(
-        Administrator, on_delete=models.CASCADE, default=1
-    )
 
     def __str__(self):
         return f"{self.user.first_name} {self.user.last_name}"

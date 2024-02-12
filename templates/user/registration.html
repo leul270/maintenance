@@ -27,7 +27,7 @@
                     <img src="{% static 'images/favicon.PNG' %}" alt="icon" style="height: 150px" />
                 </a>
                 <h3>Account SignUp</h3>
-                <p>Create a new</p>
+                <p>Create a new account as a Customer</p>
             </div>
     
             <form action="{% url 'customer_registration' %}" method="post">
@@ -74,7 +74,7 @@
                 
                     <div class="auth__alternative">
                         <p>Already have an Account?</p>
-                        <a href="login.html">Log In</a>
+                        <a href="{% url 'login' %}">Login</a>
                     </div>
                     </form>
         </div>

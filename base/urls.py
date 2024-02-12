@@ -20,7 +20,8 @@ urlpatterns = [
         views.administrator_registration,
         name="administrator_registration",
     ),
-    path("login/", views.login_user, name="login"),
+    path("login/", views.login_user, name="login"), 
+    path("signup_selection/", views.signup_selection, name="signup_selection"),
     path("user_home/<str:id>/", views.user_home, name="user_home"),
     path("technician_home/<str:id>/", views.technician_home, name="technician_home"),
     path(

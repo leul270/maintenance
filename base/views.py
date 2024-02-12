@@ -49,6 +49,11 @@ def customer_registration(request):
 
     return render(request, template_name, {"form": form})
 
+def signup_selection(request):
+    template_name = "signup_selection.html"
+    return render(request, template_name)
+
+
 
 def technician_registration(request):
     template_name = "technician/registration.html"

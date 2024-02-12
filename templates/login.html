@@ -50,21 +50,20 @@
             <form method="post" action="{% url 'login' %}">
                 {% csrf_token %}
                 <div class="form__field">
-                    <label for="formInput#text">Username: </label>
+                    <label style="font-size: 18px; font-weight: bold;" for="formInput#text">Username: </label>
                     {{ form.username }}
                 </div>
 
                 <div class="form__field">
-                    <label for="formInput#password">Password: </label>
+                    <label style="font-size: 18px; font-weight: bold;" for="formInput#password">Password: </label>
                     {{ form.password}}
             </form>
             <div class="auth__actions">
-                <input class="btn btn--sub btn--lg" type="submit" value="Log In" />
-                <a href="forgetpassword.html">Forget Password?</a>
+                <input style="width:100%;" class="btn btn--sub btn--lg" type="submit" value="Log In" />
             </div>
             <div class="auth__alternative">
-                <p>Don’t have an Account?</p>
-                <a href="signup.html">Sign Up</a>
+                <p>Don’t have an Account? <a href="{% url 'signup_selection' %}">Sign Up</a></p>
+                
             </div>
         </div>
     </div>

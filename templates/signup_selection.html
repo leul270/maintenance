@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Icon - IconMonster -->
+    <link rel="stylesheet" href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css" />
+    <!-- Mumble UI -->
+    <link rel="stylesheet" href=" {% static 'uikit/styles/uikit.css' %}" />
+    <!-- Dev Search UI -->
+    <link rel="stylesheet" href="{% static 'styles/app.css' %}" />
+
+
+    <title>HU ICT DEPARTMENT</title>
+</head>
+
+<body>
+    <div class="auth">
+        <div class="card">
+
+            <div style="margin-bottom: 20px;" class="auth__header text-center">
+                <a href="/">
+                    <img src="{% static 'images/favicon.PNG' %}" alt="icon" style="height: 150px" />
+                </a>
+                <h3>Create an Account as</h3>
+                <a href="{% url 'technician_registration' %}" style="display: block; width: 100%;">
+                    <input style="width:100%; font-size: 20px; font-weight: bold;" class="btn btn--main--outline" type="submit" value="Technician" />
+                </a>
+                </div>
+
+                <div class="auth__header text-center">
+                    <a href="{% url 'customer_registration' %}" style="display: block; width: 100%;">
+                        <input style="width:100%; font-size: 20px; font-weight: bold;" class="btn btn--main--outline" type="submit" value="Customer" />
+                    </a>
+                </div>
+        </div>
+    </div>
+</body>
+
+</html>

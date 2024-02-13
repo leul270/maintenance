@@ -81,4 +81,28 @@ class Network(models.Model):
     def __str__(self):
         return self.form_name
 
+class Software(models.Model):
+    form_name = models.CharField(max_length=50,)
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True)
+    technician = models.ForeignKey(Technician, on_delete=models.CASCADE, null=True)
+    software_name = models.CharField(max_length=50,)
+    version = models.CharField(max_length=50,)
+    operating_system = models.CharField(max_length=50,)
+
+    installation_setup = models.BooleanField(default=False)
+    performance_speed = models.BooleanField(default=False)
+    functionality_bugs = models.BooleanField(default=False)
+    compatibility_integration = models.BooleanField(default=False)
+    security_vulnerability = models.BooleanField(default=False)
+
+    short_description = models.TextField(null=True)
+    aditional_comment = models.TextField(null=True)
+
+    fixed =  models.BooleanField(default = False,null=True)
+    reviewed =  models.BooleanField(default = False, null=True)
+
+
+
+    def __str__(self):
+        return self.form_name
 

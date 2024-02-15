@@ -100,7 +100,8 @@ class Software(models.Model):
 
     fixed =  models.BooleanField(default = False,null=True)
     reviewed =  models.BooleanField(default = False, null=True)
-
+    class Meta:
+        db_table = 'customer_software'
 
 
     def __str__(self):

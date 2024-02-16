@@ -78,7 +78,7 @@ def software_form(request):
         form.customer = customer
         form.software_name = request.POST['software_name']
         form.version = request.POST['version']
-        form.operating_system = request.POST['operating_system']
+        form.operating_systems = request.POST['operating_systems']
 
         if request.POST.get('installation_setup'):
             form.installation_setup= True

@@ -213,6 +213,14 @@
                 value="create form"
                 name="maintenance form "
               />
+              {% for request in requests %}
+              <div>
+                <p>Form Type: {{ request.form_type }}</p>
+                <p>Request Details: {{ request.request_details }}</p>
+                <p>Status: {{ request.status }}</p>
+                <p>Created At: {{ request.created_at }}</p>
+              </div>
+              {% endfor %}
             </div>
           </form>
         </div>

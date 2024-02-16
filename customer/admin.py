@@ -4,3 +4,4 @@ from .models import *
 admin.site.register(UserForm)
 admin.site.register(Maintenance)
 admin.site.register(Network)
+admin.site.register(Software)

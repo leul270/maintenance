@@ -26,7 +26,6 @@
   </head>
 
   <body>
-    {% csrf_token%}
     <!-- Header Section -->
 
     <!-- Main Section -->
@@ -36,33 +35,126 @@
           <a class="backButton" href="#"><i class="im im-angle-left"></i></a>
           <br />
 
-          <form class="form" method="POST">
+          <form class="form" method="POST" action="{% url 'software_form' %}">
+            {% csrf_token%}
             <!-- Input:Text -->
             <div class="form__field">
-              <label for="formInput#text">Text Field: </label>
+              <label for="formInput#text">Form Name: </label>
               <input
                 class="input input--text"
                 id="formInput#text"
                 type="text"
-                name="text"
-                placeholder="Enter text"
+                name="form_name"
+                placeholder="Form Name"
               />
             </div>
 
-            <!-- Input:Text -->
             <div class="form__field">
-              <label for="formInput#text">Text Field: </label>
+              <label for="formInput#text">Software Name: </label>
               <input
                 class="input input--text"
                 id="formInput#text"
                 type="text"
-                name="text"
-                placeholder="Enter text"
+                name="software_name"
+                placeholder="software_name"
               />
             </div>
 
-            <!-- Input:Text -->
             <div class="form__field">
+              <label for="formInput#text">Version: </label>
+              <input
+                class="input input--text"
+                id="formInput#text"
+                type="text"
+                name="version"
+                placeholder="version"
+              />
+            </div>
+            <div class="form__field">
+              <h5 class="header__logo">Choose your Operating Systems</h5>
+              <label for="slow_internet_connection"
+                >WINDOW:</label
+              >
+              <input
+                type="radio"
+                id="operating_systems"
+                name="operating_systems"
+                value="operating_systems"
+              />
+
+              <label for="network_connectivity_issues"
+                >Linux:</label
+              >
+              <input
+                style="margin: 10px"
+                type="radio"
+                id="operating_systems"
+                name="operating_systems"
+                value="operating_systems"
+              />
+
+              <label for="wi_fi_connection_problems"
+                >MacOs:</label
+              >
+              <input
+                type="radio"
+                id="operating_systems"
+                name="operating_systems"
+                value="operating_systems"
+              />
+            </div>
+
+
+            <div class="form__field">
+              <h8 class="header__logo"
+                >Please select the category that best describes your software issue:
+              </h8>
+              <div   class="form__field form__field--checkbox">
+                <label for="installation_setup">Installation/Setup:</label>
+                <input type="checkbox" id="installation_setup" name="installation_setup" value="True">
+  
+                <label for="performance_speed">Performance/Speed:</label>
+                <input type="checkbox" id="performance_speed" name="performance_speed" value="True">
+  
+                <label for=" functionality_bugs"> Functionality/Bugs:</label>
+                <input type="checkbox" id="functionality_bugs" name="functionality_bugs" value="True">
+  
+                <label for=" compatibility_integration"> Compatibility/Integration:</label>
+                <input type="checkbox" id="compatibility_integration" name="compatibility_integration" value="True">
+  
+                <label for=" security_vulnerability"> Security/Vulnerability:</label>
+                <input type="checkbox" id="security_vulnerability" name="security_vulnerability" value="True">
+              </div>
+
+
+            <div class="form__field">
+              <label for="formInput#text">Short Description: </label>
+
+              <textarea
+                class="input input--text"
+                id="formInput#text"
+                type="text"
+                name="short_description"
+                placeholder="Enter text"
+              >
+              </textarea>
+            </div>
+
+            <div class="form__field">
+              <label for="formInput#text">Aditional comment: </label>
+
+              <textarea
+                class="input input--text"
+                id="formInput#text"
+                type="text"
+                name="aditional_comment"
+                placeholder="Enter text"
+              >
+              </textarea>
+            </div>
+
+            <!-- Input:Text -->
+            <!-- <div class="form__field">
               <label for="formInput#text">Text Field: </label>
               <input
                 class="input input--text"
@@ -71,7 +163,19 @@
                 name="text"
                 placeholder="Enter text"
               />
-            </div>
+            </div> -->
+
+            <!-- Input:Text -->
+            <!-- <div class="form__field">
+              <label for="formInput#text">Text Field: </label>
+              <input
+                class="input input--text"
+                id="formInput#text"
+                type="text"
+                name="text"
+                placeholder="Enter text"
+              />
+            </div> -->
             <input
               class="btn btn--sub btn--lg my-md"
               type="submit"

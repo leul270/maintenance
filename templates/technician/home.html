@@ -4,30 +4,68 @@
 
 {% block content %}
 
-   
 
-    <!-- Main Section -->
-    <main class="home">
-     
-        <div class="container container--narrow" style="text-align: center; border-bottom:1px ;">
-          
-            
-            <h2 style="color: black;">Recent Activities</h2>
 
-         
+
+
+
+<style>
+  .navbar {
+      display: flex;
+      justify-content: space-around;
+      background-color: #f0f0f0; /* Optional: add a background color */
+      padding: 10px;
+    }
+  
+    .navbar ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+  
+    .navbar li {
+      margin-right: 20px;
+    }
+  
+    .navbar a {
+      text-decoration: none;
+      color: #2d2d39;
+    }
+  
+    .navbar a.active {
+      color: #007bff; 
+      font-weight: bold;
+    }
+  </style>
+  
+  
+    <main class="projects">
+      <section class="hero-section text-center">
+        <div class="container container--narrow">
+          <div class="hero-section__box" style="margin-top: 20px;">
+            <h2>Recent  <span>Activities</span></h2>
           </div>
-       
-      
-    
-      <!-- Search Result: DevList -->
+          <nav class="navbar">
+            <ul>
+              <li><a href="#" onclick="filterTasks('all')">All</a></li>
+              <li><a href="#" onclick="filterTasks('newtask')">Maintenance</a></li>
+              <li><a href="#" onclick="filterTasks('pending')">Network</a></li>
+              <li><a href="#" onclick="filterTasks('finished')">Software</a></li>
+            </ul>
+          </nav>
+        
+        </div>
+      </section>
+     
+     
       <section class="devlist">
         <div class="container">
-          <div class="grid grid--three">
-
-            {% for task in tasks %}
-            <div class="column card">
+          <div class="grid grid--three" id="taskGrid">
+            {% for task in maintenance_tasks %}
+            <div class="column card"id="newtask">
               <div class="dev">
-                <a href="{% url 'detail' task.id %}" class="card__body">
+                <a href="{% url 'detail' task.id 'maintenance' %}" class="card__body">
                   <div class="dev__profile">
                     
                     <div class="dev__meta">
@@ -36,36 +74,76 @@
                     </div>
                   </div>
                   <p class="dev__info">
-                    {{ task.short_description|truncatechars:200}}                 </p>
+                    {{ task.short_description|truncatechars:200}}     
+                  </p>
                   <div class="dev__skills">
                     <span class="tag tag--pill tag--main">
                       <small>Hardware Problem</small>
                     </span>
-                   
                     {% if not task.fixed and not task.reviewed %}
-                    <span class="tag" style="background-color: rgb(209, 60, 60);">
-                      <small>New Task</small>
-                    </span>
-                  {% elif task.fixed and not task.reviewed %}
-                    <span class="tag" style="background-color: rgb(231, 120, 17);">
-                      <small>Pending</small>
-                    </span>
-                  {% else %}
-                    <span class="tag" style="background-color: rgb(78, 231, 17);">
-                      <small>Fixed</small>
-                    </span>
-                  {% endif %}
-                  
+                      <span class="tag" style="background-color: rgb(209, 60, 60);">
+                        <small>New Task</small>
+                      </span>
+                    {% elif task.fixed and not task.reviewed %}
+                      <span class="tag" style="background-color: rgb(231, 120, 17);">
+                        <small>Pending</small>
+                      </span>
+                    {% else %}
+                      <span class="tag" style="background-color: rgb(78, 231, 17);">
+                        <small>Fixed</small>
+                      </span>
+                    {% endif %}
                      
                    
                   </div>
                 </a>
               </div>
             </div>
-         {%endfor%}
-      
-           
+            {%endfor%}
+
+
+            {% for task in network_tasks %}
+            <div class="column card"id="pending">
+              <div class="dev">
+
+                <a href="{% url 'detail' task.id 'network' %}" class="card__body">
+                  <div class="dev__profile">
+                    
+                    <div class="dev__meta">
+                      <h3>{{task.customer}}</h3>
+                      <h5>{{task.form_name}}</h5>
+                    </div>
+                  </div>
+                  <p class="dev__info">
+                    {{ task.short_description|truncatechars:200}}     
+                  </p>
+                  <div class="dev__skills">
+                    <span class="tag tag--pill tag--main">
+                      <small>Hardware Problem</small>
+                    </span>
+                    {% if not task.fixed and not task.reviewed %}
+                      <span class="tag" style="background-color: rgb(209, 60, 60);">
+                        <small>New Task</small>
+                      </span>
+                    {% elif task.fixed and not task.reviewed %}
+                      <span class="tag" style="background-color: rgb(231, 120, 17);">
+                        <small>Pending</small>
+                      </span>
+                    {% else %}
+                      <span class="tag" style="background-color: rgb(78, 231, 17);">
+                        <small>Fixed</small>
+                      </span>
+                    {% endif %}
+                     
+                   
+                  </div>
+                </a>
+              </div>
+            </div>
+            {%endfor%}
           
+          
+            
               
               </div>
             </div>
@@ -75,10 +153,39 @@
 
       <div class="pagination">
         <ul class="container">
-          
-         
-          <li><a href="{% url 'allTasks' %}" class="btn">More &#10095;</a></li>
+      
+          <li><a href="{% url 'networkTaks' %}" class="btn">Network &#10095;</a></li>
+          <li><a href="{% url 'maintenanceTasks' %}" class="btn">Maintenance &#10095;</a></li>
+          <li><a href="{% url 'softwareTasks' %}" class="btn">Software &#10095;</a></li>
+
+        </div>
         </ul>
       </div>
     </main>
+  
+    <script>
+    
+  
+    function filterTasks(status) {
+      var taskGrid = document.getElementById('taskGrid').children;
+      
+      for (var i = 0; i < taskGrid.length; i++) {
+        if (status === 'all' || taskGrid[i].id === status) {
+          taskGrid[i].style.display = 'block';
+        } else {
+          taskGrid[i].style.display = 'none';
+        }
+      }
+  
+     
+      var navbarLinks = document.querySelectorAll('.navbar a');
+      navbarLinks.forEach(function(link) {
+        link.classList.remove('active');
+      });
+  
+      // Add "active" class to the clicked link
+      document.querySelector('[onclick="filterTasks(\'' + status + '\')"]').classList.add('active');
+    }
+  
+    </script>
 {% endblock%}

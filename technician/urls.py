@@ -4,9 +4,11 @@ from . import views
 
 urlpatterns = [
     path("", views.home, name="tech_home"),
-      path("detail/<str:pk>", views.detail, name="detail"),
+      path("detail/<str:pk>/<str:parameter>/", views.detail, name="detail"),
            path("updateProfile/<str:pk>", views.updateProfile, name="updateProfile"),
-            path("all-tasks", views.allTasks, name="allTasks"),
+            path("all-softwares", views.softwareTaks, name="softwareTasks"),
+            path("all-networks", views.networkTaks, name='networkTaks'),
+            path("all-maintenances", views.maintenanceTasks, name='maintenanceTasks'),
             path("<str:pk>", views.isFixed, name="isFixed"),
     
 ]

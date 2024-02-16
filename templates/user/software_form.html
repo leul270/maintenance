@@ -5,7 +5,57 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <style>
+      /* Radio button container */
+    .form__field {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 5px;
+      justify-content: flex-start;
+    }
+        /* Radio button wrapper */
+        .radio__wrapper {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 2px;
+          /* align-items: center; */
+          background-color: #f6f8fc;
+          padding: 5px;
+          border-radius: 4px;
+          justify-content: flex-start;
+          border: 2px solid #d6d1d1; 
+        }
+    /* Radio button label */
+    .form__field label {
+      display: flex;
+      align-items: left;
+      margin-bottom: 1px;
+      font-weight: lighter;
+    }
+    
+    /* Radio button input */
+    .form__field input[type="radio"] {
+      margin-right: none;
+      margin-bottom: 0;
+    }
+    
+    
+    /* Radio button input (checked state) */
+    .form__field input[type="radio"]:checked::before {
+      background-color: #999;
+    }
+    
+    /* Radio button input (focus state) */
+    .form__field input[type="radio"]:focus::before {
+      outline: none;
+      border-color: #333;
+    }
+    
+    /* Radio button input (hover state) */
+    .form__field input[type="radio"]:hover::before {
+      border-color: #333;
+    }
+    </style>
     <!-- Favicon -->
     <link
       rel="shortcut icon"
@@ -71,8 +121,9 @@
               />
             </div>
             <div class="form__field">
-              <h5 class="header__logo">Choose your Operating Systems</h5>
-              <label for="slow_internet_connection"
+              <p class="header__logo">Choose your Operating Systems</p>
+              <div class="radio__wrapper">
+                <label for="slow_internet_connection"
                 >WINDOW:</label
               >
               <input
@@ -102,28 +153,32 @@
                 name="operating_systems"
                 value="operating_systems"
               />
+              </div>
             </div>
 
 
             <div class="form__field">
-              <h8 class="header__logo"
+              <p class="header__logo"
                 >Please select the category that best describes your software issue:
-              </h8>
-              <div   class="form__field form__field--checkbox">
-                <label for="installation_setup">Installation/Setup:</label>
-                <input type="checkbox" id="installation_setup" name="installation_setup" value="True">
-  
-                <label for="performance_speed">Performance/Speed:</label>
-                <input type="checkbox" id="performance_speed" name="performance_speed" value="True">
-  
-                <label for=" functionality_bugs"> Functionality/Bugs:</label>
-                <input type="checkbox" id="functionality_bugs" name="functionality_bugs" value="True">
-  
-                <label for=" compatibility_integration"> Compatibility/Integration:</label>
-                <input type="checkbox" id="compatibility_integration" name="compatibility_integration" value="True">
-  
-                <label for=" security_vulnerability"> Security/Vulnerability:</label>
-                <input type="checkbox" id="security_vulnerability" name="security_vulnerability" value="True">
+              </p>
+              <div  class ="radio__wrapper">
+                <div   class="form__field form__field--checkbox">
+                  <label for="installation_setup">Installation/Setup:</label>
+                  <input type="checkbox" id="installation_setup" name="installation_setup" value="True">
+    
+                  <label for="performance_speed">Performance/Speed:</label>
+                  <input type="checkbox" id="performance_speed" name="performance_speed" value="True">
+    
+                  <label for=" functionality_bugs"> Functionality/Bugs:</label>
+                  <input type="checkbox" id="functionality_bugs" name="functionality_bugs" value="True">
+    
+                  <label for=" compatibility_integration"> Compatibility/Integration:</label>
+                  <input type="checkbox" id="compatibility_integration" name="compatibility_integration" value="True">
+    
+                  <label for=" security_vulnerability"> Security/Vulnerability:</label>
+                  <input type="checkbox" id="security_vulnerability" name="security_vulnerability" value="True">
+         
+              </div>
               </div>
 
 

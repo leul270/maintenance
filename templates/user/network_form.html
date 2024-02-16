@@ -5,7 +5,57 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+  /* Radio button container */
+.form__field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+  justify-content: flex-start;
+}
+    /* Radio button wrapper */
+    .radio__wrapper {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 2px;
+      /* align-items: center; */
+      background-color: #f6f8fc;
+      padding: 5px;
+      border-radius: 4px;
+      justify-content: flex-start;
+      border: 2px solid #d6d1d1; 
+    }
+/* Radio button label */
+.form__field label {
+  display: flex;
+  align-items: left;
+  margin-bottom: 1px;
+  font-weight: lighter;
+}
 
+/* Radio button input */
+.form__field input[type="radio"] {
+  margin-right: none;
+  margin-bottom: 0;
+}
+
+
+/* Radio button input (checked state) */
+.form__field input[type="radio"]:checked::before {
+  background-color: #999;
+}
+
+/* Radio button input (focus state) */
+.form__field input[type="radio"]:focus::before {
+  outline: none;
+  border-color: #333;
+}
+
+/* Radio button input (hover state) */
+.form__field input[type="radio"]:hover::before {
+  border-color: #333;
+}
+</style>
     <!-- Favicon -->
     <link
       rel="shortcut icon"
@@ -50,8 +100,10 @@
             </div>
 
             <div class="form__field">
-              <h5 class="header__logo">Choose Type of Network Problem</h5>
-              <label for="slow_internet_connection"
+              <p class="header__logo">Choose Type of Network Problem</p>
+              <div class="radio__wrapper">
+
+                <label for="slow_internet_connection"
                 >Slow Internet Connection:</label
               >
               <input
@@ -65,7 +117,7 @@
                 >Network Connectivity Issues:</label
               >
               <input
-                style="margin: 10px"
+              
                 type="radio"
                 id="network_connectivity_issues"
                 name="type_of_network_problem"
@@ -97,24 +149,29 @@
                 name="type_of_network_problem"
                 value="others"
               />
+              </div>
+              
             </div>
 
             <div class="form__field">
               <h8 class="header__logo"
                 >Have you tried any Troubleshooting Steps
               </h8>
-              <label for="reset_network_settings">Reset network settings:</label>
-              <input type="checkbox" id="reset_network_settings" name="reset_network_settings" value="True">
-
-              <label for="checked_network_cables">Checked network cables:</label>
-              <input type="checkbox" id="checked_network_cables" name="checked_network_cables" value="True">
-
-              <label for="restarted_computer_device">Restarted computer/device:</label>
-              <input type="checkbox" id="restarted_computer_device" name="restarted_computer_device" value="True">
-
-              <label for="rebooted_modem_router">Rebooted modem or router</label>
-              <input type="checkbox" id="rebooted_modem_router" name="rebooted_modem_router" value="True">
-
+              <div class="radio__wrapper">
+                <label for="reset_network_settings">Reset network settings:</label>
+                <input type="checkbox" id="reset_network_settings" name="reset_network_settings" value="True">
+  
+                <label for="checked_network_cables">Checked network cables:</label>
+                <input type="checkbox" id="checked_network_cables" name="checked_network_cables" value="True">
+  
+                <label for="restarted_computer_device">Restarted computer/device:</label>
+                <input type="checkbox" id="restarted_computer_device" name="restarted_computer_device" value="True">
+  
+                <label for="rebooted_modem_router">Rebooted modem or router</label>
+                <input type="checkbox" id="rebooted_modem_router" name="rebooted_modem_router" value="True">
+  
+              </div>
+              
             <div class="form__field">
               <label for="formInput#text">Short Description: </label>
 

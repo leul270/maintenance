@@ -1,0 +1,161 @@
+{% extends 'technician/base.html'%}
+{% load static%}
+{% block content %}
+
+<style>
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    background-color: #f0f0f0; /* Optional: add a background color */
+    padding: 10px;
+  }
+
+  .navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+
+  .navbar li {
+    margin-right: 20px;
+  }
+
+  .navbar a {
+    text-decoration: none;
+    color: #2d2d39;
+  }
+
+  .navbar a.active {
+    color: #007bff; 
+    font-weight: bold;
+  }
+</style>
+
+
+  <main class="projects">
+    <section class="hero-section text-center">
+      <div class="container container--narrow">
+        <div class="hero-section__box" style="margin-top: 20px;">
+          <h2>Search for <span>Tasks</span></h2>
+        </div>
+
+        <div class="hero-section__search">
+          <form class="form" action="#" method="get">
+            <div class="form__field">
+              <label for="formInput#search">Search By Projects </label>
+              <input class="input input--text" id="formInput#search" type="text" name="text"
+                placeholder="Search by Task Name" />
+            </div>
+
+            <input class="btn btn--sub btn--lg" type="submit" value="Search" />
+          </form>
+
+          <nav class="navbar">
+            <ul>
+              <li><a href="#" onclick="filterTasks('all')">All</a></li>
+              <li><a href="#" onclick="filterTasks('newtask')">New Task</a></li>
+              <li><a href="#" onclick="filterTasks('pending')">Pending</a></li>
+              <li><a href="#" onclick="filterTasks('finished')">Fixed</a></li>
+            </ul>
+          </nav>
+      
+        </div>
+      </div>
+    </section>
+   
+   
+    <section class="devlist">
+      <div class="container">
+        <div class="grid grid--three" id="taskGrid">
+          {% for task in network_tasks %}
+          <div class="column card"id="{% if not task.fixed and not task.reviewed %}newtask{% elif task.fixed and not task.reviewed %}pending{% else %}finished{% endif %}">
+            <div class="dev">
+              <a href="{% url 'detail' task.id %}" class="card__body">
+                <div class="dev__profile">
+                  
+                  <div class="dev__meta">
+                    <h3>{{task.customer}}</h3>
+                    <h5>{{task.form_name}}</h5>
+                  </div>
+                </div>
+                <p class="dev__info">
+                  {{ task.short_description|truncatechars:200}}     
+                </p>
+                <div class="dev__skills">
+                  <span class="tag tag--pill tag--main">
+                    <small>Hardware Problem</small>
+                  </span>
+                  {% if not task.fixed and not task.reviewed %}
+                    <span class="tag" style="background-color: rgb(209, 60, 60);">
+                      <small>New Task</small>
+                    </span>
+                  {% elif task.fixed and not task.reviewed %}
+                    <span class="tag" style="background-color: rgb(231, 120, 17);">
+                      <small>Pending</small>
+                    </span>
+                  {% else %}
+                    <span class="tag" style="background-color: rgb(78, 231, 17);">
+                      <small>Fixed</small>
+                    </span>
+                  {% endif %}
+                   
+                 
+                </div>
+              </a>
+            </div>
+          </div>
+          {%endfor%}
+        
+          
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="pagination">
+      <ul class="container">
+        <li><a href="#" class="btn btn--disabled">&#10094; Prev</a></li>
+        <li><a href="#" class="btn btn--sub">01</a></li>
+        <li><a href="#" class="btn">02</a></li>
+        <li><a href="#" class="btn">03</a></li>
+        <li><a href="#" class="btn">04</a></li>
+        <li><a href="#" class="btn">05</a></li>
+        <li><a href="#" class="btn">06</a></li>
+        <li><a href="#" class="btn">07</a></li>
+        <li><a href="#" class="btn">08</a></li>
+        <li><a href="#" class="btn">09</a></li>
+        <li><a href="#" class="btn">10</a></li>
+        <li><a href="#" class="btn">Next &#10095;</a></li>
+      </ul>
+    </div>
+  </main>
+
+  <script>
+  
+
+  function filterTasks(status) {
+    var taskGrid = document.getElementById('taskGrid').children;
+    
+    for (var i = 0; i < taskGrid.length; i++) {
+      if (status === 'all' || taskGrid[i].id === status) {
+        taskGrid[i].style.display = 'block';
+      } else {
+        taskGrid[i].style.display = 'none';
+      }
+    }
+
+    // Remove "active" class from all links
+    var navbarLinks = document.querySelectorAll('.navbar a');
+    navbarLinks.forEach(function(link) {
+      link.classList.remove('active');
+    });
+
+    // Add "active" class to the clicked link
+    document.querySelector('[onclick="filterTasks(\'' + status + '\')"]').classList.add('active');
+  }
+
+  </script>
+{% endblock %}

@@ -1,33 +1,60 @@
 from django.shortcuts import render,redirect
 from base.models import  Technician
-from customer.models import UserForm
+from customer.models import Maintenance,Network,Software
 from .models import TechnicianForm
+from itertools import chain
 
 
 # Create your views here.
 
 
 def home(request):
-    technician = Technician.objects.get(user= 15)
-    tasks = UserForm.objects.filter(technician=technician)
-    context = {'tasks':tasks}
+    technician = request.user.id
+    
+
+    maintenance_tasks = Maintenance.objects.filter(technician=technician)
+    network_tasks = Network.objects.filter(technician=technician)
+    
+    # software_tasks = Software.objects.filter(technician=technician)
+
+    # tasks = list(chain(maintenance_tasks, network_tasks))
+
+    context = {'maintenance_tasks':maintenance_tasks,'network_tasks':network_tasks}
 
     return render(request, 'technician/home.html', context)
 
-def detail(request,pk):
-    single_task = UserForm.objects.get(id =pk)
+def detail(request,pk, parameter):
+    if parameter == "maintenance":
+        single_task = Maintenance.objects.get(id=pk)
+        context = {'single_task':single_task}
+    elif parameter == "network":
+        single_task = Network.objects.get(id=pk)
+        context = {'single_task':single_task}
     
-    context = {'single_task':single_task}
+    
     return render(request, 'technician/detail.html',context)
+
 
 def updateProfile(request,pk):
     return render(request, 'technician/updateProfile.html')
-def allTasks(request):
-    technician = Technician.objects.get(user= 15)
-    tasks = UserForm.objects.filter(technician=technician)
- 
-    context = {'tasks':tasks}
-    return render(request, 'technician/allTasks.html',context)
+def maintenanceTasks(request):
+    technician = request.user.id
+    maintenance_tasks = Maintenance.objects.filter(technician=technician)
+    context = {'maintenance_tasks':maintenance_tasks}
+    return render(request, 'technician/maintenance.html',context)
+
+def networkTaks(request):
+    technician = request.user.id
+    network_tasks = Network.objects.filter(technician=technician)
+    context = {'network_tasks':network_tasks}
+    return render(request, 'technician/network.html',context)
+
+def softwareTaks(request):
+    technician = request.user.id
+    # network_tasks = Network.objects.filter(technician=technician)
+    # context = {'network_tasks':network_tasks}
+    return render(request, 'technician/software.html')
+
 def isFixed(request,pk):
     technicianForm  = TechnicianForm()
     task = UserForm.objects.get(id=pk)

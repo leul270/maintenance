@@ -328,6 +328,21 @@ class TechnicianResgistrationForm(UserCreationForm):
                 "id": "formInput#level",
             }
         ))
+    EXPERT_ON_CHOICES = (
+        ("Maintenance", "Maintenance"),
+        ("Network", "Network"),
+        ("Software", "Software"),
+        ("Software", "Software"),
+    )
+    expert_on = forms.ChoiceField(choices=EXPERT_ON_CHOICES,   
+        widget=forms.Select(
+            attrs={
+                "class": "uk-select",
+                "aria-label":"Select",
+                "placeholder": "",
+                "id": "formInput#expert",
+            }
+        ))
     short_description = forms.CharField(    
         widget=forms.Textarea(
             attrs={

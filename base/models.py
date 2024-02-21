@@ -1,3 +1,4 @@
+from random import choice
 from django.db import models
 
 # from django.utils import timezone
@@ -43,6 +44,13 @@ class Administrator(models.Model):
 class Technician(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     department = models.CharField(max_length=100)
+    EXPERT_ON_CHOICES = (
+        ("Maintenance", "Maintenance"),
+        ("Network", "Network"),
+        ("Software", "Software"),
+        ("Software", "Software"),
+    )
+    expert_on = models.CharField(max_length=20, choices=EXPERT_ON_CHOICES)
     campus = models.CharField(max_length=50)
     work_experiance = models.IntegerField()
     phone_number = models.IntegerField(null= True)

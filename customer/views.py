@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from base.forms import *
 from .models import *
+from base.models import Customer
 from django.views.decorators.csrf import csrf_protect
 
 def customer_home(request):
@@ -13,7 +14,7 @@ def maintenance(request):
 @csrf_protect
 def maintenance_form(request):
     form =  Maintenance()
-    customer = Customer.objects.get(user_id=2)  #request.user
+    customer = Customer.objects.get(user = request.user) 
     if request.method == 'POST':
         form.form_name = request.POST['form_name']
         form.customer = customer
@@ -30,7 +31,7 @@ def network(request):
 @csrf_protect
 def network_form(request):
     form =  Network()
-    customer = Customer.objects.get(user_id=5)  #request.user
+    customer = Customer.objects.get(user = request.user) #request.user
     if request.method == 'POST':
         # print(request.POST.get("reset_network_settings"))
         form.form_name = request.POST['form_name']
@@ -71,7 +72,7 @@ def software(request):
     return render(request, "user/software.html", context)
 def software_form(request):
     form =  Software()
-    customer = Customer.objects.get(user_id=5)  #request.user
+    customer = Customer.objects.get(user = request.user) 
     if request.method == 'POST':
         # print(request.POST.get("reset_network_settings"))
         form.form_name = request.POST['form_name']

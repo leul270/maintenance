@@ -11,6 +11,7 @@ class User(AbstractUser):
     is_staff = models.BooleanField(default=False)
     is_technician = models.BooleanField(default=False)
     is_customer = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=False)
 
     def __str__(self):
         return self.username

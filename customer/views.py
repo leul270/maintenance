@@ -1,9 +1,10 @@
 from django.shortcuts import render,redirect
 from base.forms import *
 from .models import *
+from base.permissions import customer_required
 from base.models import Customer
 from django.views.decorators.csrf import csrf_protect
-
+@customer_required
 def customer_home(request):
     context = {}
     return render(request, "user/customer_home.html", context)

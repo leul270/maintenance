@@ -4,7 +4,7 @@ from .forms import UserLoginForm
 from . import views
 
 urlpatterns = [
-    path("", views.home, name="home"),
+    # path("", views.home, name="home"),
     path(
         "customer_registration",
         views.customer_registration,
@@ -22,6 +22,7 @@ urlpatterns = [
         name="administrator_registration",
     ),
     path("login/", views.login_user, name="login"), 
+    path("activation", views.activation_wait,name="activation"),
     path("signup_selection/", views.signup_selection, name="signup_selection"),
     path("user_home/<str:id>/", views.user_home, name="user_home"),
     path("technician_home/<str:id>/", views.technician_home, name="technician_home"),
@@ -30,9 +31,5 @@ urlpatterns = [
         views.administrator_home,
         name="administrator_home",
     ),
-    path(
-        "login1",
-        views.home,
-        name="login1",
-    ),
+
 ]

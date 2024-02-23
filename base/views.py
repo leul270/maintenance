@@ -43,7 +43,7 @@ def customer_registration(request):
         form = CustomerResgistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("login")
+            return redirect("activation")
     else:
         form = CustomerResgistrationForm()
 
@@ -52,6 +52,11 @@ def customer_registration(request):
 def signup_selection(request):
     template_name = "signup_selection.html"
     return render(request, template_name)
+
+def activation_wait(request):
+    template_name = "wait_activation.html"
+    return render(request, template_name)
+
 
 @login_required(login_url='login')
 def log_out(request):
@@ -67,7 +72,7 @@ def technician_registration(request):
         form = TechnicianResgistrationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            return redirect("login") # Replace 'home' with the actual URL you want to redirect to after registration
+            return redirect("activation") # Replace 'home' with the actual URL you want to redirect to after registration
     else:
         form = TechnicianResgistrationForm()
 

@@ -3,7 +3,7 @@ from django.contrib.auth.views import LoginView
 from . import views
 
 urlpatterns=[
-    path("customer_home/", views.customer_home, name="customer_home"),
+    path("", views.customer_home, name="customer_home"),
     path("maintenance/", views.maintenance, name="maintenance"),
     path("maintenanceForm/", views.maintenance_form, name="maintenance_form"),
 

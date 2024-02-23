@@ -16,7 +16,7 @@ def technician_required(function):
 
 def customer_required(function):
     def wrap(request, *args, **kwargs):
-        if request.user.is_authenticated and request.user.is_customer:
+        if request.user.is_authenticated and request.user.is_customer and request.user.is_active:
             return function(request, *args, **kwargs)
         else:
             return render(request, "forbidden.html")

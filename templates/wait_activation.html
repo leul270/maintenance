@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activation Pending</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.7.2/css/uikit.min.css" />
+  <style>
+    body {
+      background-color: #f0f0f0; /* Set background color */
+      color: #333; /* Set text color */
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh; /* Set full height of the viewport */
+    }
+    .card {
+      padding: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  
+
+<!-- Activation Pending Card -->
+<div class="container">
+  <div class="card uk-card uk-card-default uk-card-body">
+    <h2>Activation Pending</h2>
+    <p>Wait for activation by your superadmin.</p>
+    <a href="{% url 'home' %}" class="go-home-link">Go to Home</a>
+  </div>
+</div>
+
+</body>
+</html>

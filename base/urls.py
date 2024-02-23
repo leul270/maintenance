@@ -15,6 +15,7 @@ urlpatterns = [
         views.technician_registration,
         name="technician_registration",
     ),
+    path('logout/', views.log_out, name='logout'),
     path(
         "administrator_registration",
         views.administrator_registration,

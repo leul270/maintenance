@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.urls import path
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login,logout
 from django.urls import reverse_lazy
 from .forms import *
 from django.contrib.auth.decorators import login_required
@@ -53,6 +53,11 @@ def signup_selection(request):
     template_name = "signup_selection.html"
     return render(request, template_name)
 
+@login_required(login_url='login')
+def log_out(request):
+    logout(request)
+    messages.success(request, 'You are logged out.')
+    return redirect('login')
 
 
 def technician_registration(request):

@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from base.models import  Technician
+from base.permissions import technician_required
 from customer.models import Maintenance,Network,Software
 from .models import TechnicianForm
 from itertools import chain
@@ -7,7 +8,7 @@ from itertools import chain
 
 # Create your views here.
 
-
+@technician_required
 def home(request):
     technician = request.user.id
     

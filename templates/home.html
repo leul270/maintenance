@@ -1,13 +1,159 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    {% extends 'main.html' %} {% block content %}
-    <h1>this is home page</h1>
-    {% endblock %}
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hawaasa University ICT Maintenance</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.7.2/css/uikit.min.css" />
+  <style>
+ 
+    body{
+
+      background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+      background-size: cover;
+      color: black !important;
+      background-repeat: no-repeat;
+    }
+    
+    .uk-card-default {
+      background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%); /* Adjust the alpha value (last parameter) to control transparency */
+}
+
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="uk-navbar-container uk-background-secondary" uk-navbar>
+  <div class="uk-navbar-left">
+      <a class="uk-navbar-item uk-logo" href="#">
+          <img src="{% static 'images/favicon.PNG' %}" width="30" height="30" alt="logo"> <!-- Add your logo image here -->
+          <b>Hawaasa University ICT Coordinator Office</b>
+          
+      </a>
+  </div>
+ 
+  <div class="uk-navbar-right">
+      <ul class="uk-navbar-nav">
+          <li><a href="{% url 'login' %}">Login</a></li>
+          <li><a href="{% url 'signup_selection' %}">Signup</a></li>
+      </ul>
+  </div>
+</nav>
+
+<div class="uk-container uk-margin-top">
+  <!-- Container for Image Space -->
+  <div class="uk-cover-container uk-height-large">
+      <div class="uk-position-relative">
+          <div class="">
+              <img src="{% static 'images/back.jpg' %}" alt="" style="width: 100%; height: 100%; object-fit: contain; object-position: center;">
+          </div>
+      </div>
+  </div>
+</div>
+<!-- Main Content -->
+<div class="uk-container uk-margin-top">
+    <div class="uk-child-width-1-2@s uk-child-width-1-3@m uk-grid-match" uk-grid>
+        <!-- Card 1 -->
+        <div>
+            <div class="uk-card uk-card-default uk-card-hover">
+                <div class="uk-card-media-top">
+                    <img src="{% static 'images/maintainance.jpeg' %}" alt="image part">
+                </div>
+                <div class="uk-card-body">
+                    <h3 class="uk-card-title">Maintainance</h3>
+                    <p>Maintenance services provided by the ICT Department of Hawaasa University. Specializing in computers, printers, scanners, and other electronic devices./p>
+                </div>
+            </div>
+        </div>
+        <!-- Card 2 -->
+        <div>
+            <div class="uk-card uk-card-default uk-card-hover">
+                <div class="uk-card-media-top">
+                    <img src="{% static 'images/network.png' %}" alt="">
+                </div>
+                <div class="uk-card-body">
+                    <h3 class="uk-card-title">Network</h3>
+                    <p>We specialize in resolving various network issues, including slow network connections, configuration problems, and troubleshooting network-related issues to ensure seamless connectivity.n</p>
+                </div>
+            </div>
+        </div>
+        <!-- Card 3 -->
+        <div>
+            <div class="uk-card uk-card-default uk-card-hover">
+                <div class="uk-card-media-top">
+                    <img src="{% static 'images/software.jpeg' %}" alt="">
+                </div>
+                <div class="uk-card-body">
+                    <h3 class="uk-card-title">Software</h3>
+                    <p>Our software services encompass resolving software-related challenges such as system crashes, application errors, and software configuration issues, ensuring smooth and efficient operation of your digital systems.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Card 4 -->
+       
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.7.2/js/uikit.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.7.2/js/uikit-icons.min.js"></script>
+</body>
 </html>
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.18.0/dist/css/uikit.min.css" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css" />
+
+    <link rel="stylesheet" href=" {% static 'uikit/styles/uikit.css' %}" />
+   
+    <link rel="stylesheet" href="{% static 'styles/app.css' %}" />
+
+
+    <title>HU ICT DEPARTMENT</title>
+</head>
+
+<body>
+  <div class="uk-cover-container uk-height-medium">
+    <img src="{% static 'images/back.jpg' %}" alt="" uk-cover>
+   </div>
+    <div class="auth" >
+        <div class="" style="height: 99vh;margin-top:20px;">
+
+            <div style="margin-bottom:20px;" class="auth__header text-center">
+               
+                <h3>Welcome to Hawassa University ICT Coordinator Office Website</h3>
+                <a href="{% url 'technician_registration' %}" style="display: block; width: 100%;">
+                    <input style="width:100%; font-size: 20px; font-weight: bold;" class="btn btn--main--outline" type="submit" value="Technician" />
+                </a>
+                </div>
+
+                <div class="auth__header text-center">
+                    <a href="{% url 'customer_registration' %}" style="display: block; width: 100%;">
+                        <input style="width:100%; font-size: 20px; font-weight: bold;" class="btn btn--main--outline" type="submit" value="Customer" />
+                    </a>
+                </div>
+        </div>
+    </div>
+</body>
+
+</html> -->

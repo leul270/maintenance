@@ -1,26 +1,15 @@
 from django.shortcuts import render,redirect
 from base.models import  Technician
-from base.permissions import technician_required
 from customer.models import Maintenance,Network,Software
 from .models import TechnicianForm
 from itertools import chain
 
-
-# Create your views here.
-
-@technician_required
 def home(request):
     technician = request.user.id
-    
-
     maintenance_tasks = Maintenance.objects.filter(technician=technician)
     network_tasks = Network.objects.filter(technician=technician)
-    
-    # software_tasks = Software.objects.filter(technician=technician)
-
-    # tasks = list(chain(maintenance_tasks, network_tasks))
-
-    context = {'maintenance_tasks':maintenance_tasks,'network_tasks':network_tasks}
+    software_tasks = Software.objects.filter(technician=technician)
+    context = {'maintenance_tasks':maintenance_tasks,'network_tasks':network_tasks,'software_tasks':software_tasks}
 
     return render(request, 'technician/home.html', context)
 
@@ -31,11 +20,17 @@ def detail(request,pk, parameter):
     elif parameter == "network":
         single_task = Network.objects.get(id=pk)
         context = {'single_task':single_task}
+    else:
+        software_tasks = Software.objects.get(id=pk)
+        context = {'software_tasks':software_tasks}
     
     
     return render(request, 'technician/detail.html',context)
 
-
+def networkDetail(request,pk):
+    single_task = Network.objects.get(id=pk)
+    context = {'single_task':single_task}
+    return render(request, 'technician/networkDetial.html',context)
 def updateProfile(request,pk):
     return render(request, 'technician/updateProfile.html')
 def maintenanceTasks(request):
@@ -52,9 +47,9 @@ def networkTaks(request):
 
 def softwareTaks(request):
     technician = request.user.id
-    # network_tasks = Network.objects.filter(technician=technician)
-    # context = {'network_tasks':network_tasks}
-    return render(request, 'technician/software.html')
+    software_tasks = Software.objects.filter(technician=technician)
+    context = {'software_tasks':software_tasks}
+    return render(request, 'technician/software.html',context)
 
 def isFixed(request,pk):
     technicianForm  = TechnicianForm()

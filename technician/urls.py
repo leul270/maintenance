@@ -9,6 +9,9 @@ urlpatterns = [
             path("all-softwares", views.softwareTaks, name="softwareTasks"),
             path("all-networks", views.networkTaks, name='networkTaks'),
             path("all-maintenances", views.maintenanceTasks, name='maintenanceTasks'),
+            path("network-detail/<str:pk>", views.networkDetail, name='networkDetail'),
+
+            
             path("<str:pk>", views.isFixed, name="isFixed"),
     
 ]

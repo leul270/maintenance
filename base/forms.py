@@ -124,8 +124,9 @@ class CustomerResgistrationForm(UserCreationForm):
         customer = Customer.objects.create(
             user=user, department=department, campus=campus
         )
+
         customer = customer.save()
-        return user
+        return customer
 
 
 class AdministratorResgistrationForm(UserCreationForm):

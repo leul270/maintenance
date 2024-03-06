@@ -103,10 +103,10 @@
 
 
             {% for task in network_tasks %}
-            <div class="column card"id="pending">
+            <div class="column card" id="pending">
               <div class="dev">
 
-                <a href="{% url 'detail' task.id 'network' %}" class="card__body">
+                <a href="{% url 'networkDetail' task.id %}" class="card__body">
                   <div class="dev__profile">
                     
                     <div class="dev__meta">
@@ -119,7 +119,7 @@
                   </p>
                   <div class="dev__skills">
                     <span class="tag tag--pill tag--main">
-                      <small>Hardware Problem</small>
+                      <small>Network Problem</small>
                     </span>
                     {% if not task.fixed and not task.reviewed %}
                       <span class="tag" style="background-color: rgb(209, 60, 60);">
@@ -141,7 +141,44 @@
               </div>
             </div>
             {%endfor%}
-          
+            {% for task in software_tasks %}
+            <div class="column card"id="finished">
+              <div class="dev">
+                <a href="{% url 'detail' task.id 'software' %}" class="card__body">
+                  <div class="dev__profile">
+                    
+                    <div class="dev__meta">
+                      <h3>{{task.customer}}</h3>
+                      <h5>{{task.form_name}}</h5>
+                    </div>
+                  </div>
+                  <p class="dev__info">
+                    {{ task.short_description|truncatechars:200}}     
+                  </p>
+                  <div class="dev__skills">
+                    <span class="tag tag--pill tag--main">
+                      <small>Software Problem</small>
+                    </span>
+                    {% if not task.fixed and not task.reviewed %}
+                      <span class="tag" style="background-color: rgb(209, 60, 60);">
+                        <small>New Task</small>
+                      </span>
+                    {% elif task.fixed and not task.reviewed %}
+                      <span class="tag" style="background-color: rgb(231, 120, 17);">
+                        <small>Pending</small>
+                      </span>
+                    {% else %}
+                      <span class="tag" style="background-color: rgb(78, 231, 17);">
+                        <small>Fixed</small>
+                      </span>
+                    {% endif %}
+                     
+                   
+                  </div>
+                </a>
+              </div>
+            </div>
+            {%endfor%}
           
             
               

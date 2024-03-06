@@ -12,5 +12,6 @@ urlpatterns = [
     path("", home, name="home"),
     path('accounts/', include('base.urls')),
     path('technician/', include('technician.urls')),
-    path("customer/",include('customer.urls'))
+    path("customer/",include('customer.urls')),
+    path("administrations/",include('administrator.urls'))
 ]
